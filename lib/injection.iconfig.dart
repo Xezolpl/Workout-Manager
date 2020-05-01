@@ -4,6 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
+import 'package:workout_manager/presentation/bottom_navigation/bloc/bottom_navigation_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_injectable_module.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_user_mapper.dart';
@@ -12,11 +13,12 @@ import 'package:google_sign_in/google_sign_in.dart';
 import 'package:workout_manager/infrastructure/repositories/auth_repository_impl.dart';
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
 import 'package:workout_manager/presentation/sign_in/bloc/sign_in_bloc.dart';
-import 'package:workout_manager/presentation/auth/bloc/bloc/auth_bloc.dart';
+import 'package:workout_manager/presentation/auth/bloc/auth_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
   final firebaseInjectableModule = _$FirebaseInjectableModule();
+  g.registerFactory<BottomNavigationBloc>(() => BottomNavigationBloc());
   g.registerLazySingleton<FirebaseAuth>(
       () => firebaseInjectableModule.firebaseAuth);
   g.registerLazySingleton<FirebaseUserMapper>(() => FirebaseUserMapper());

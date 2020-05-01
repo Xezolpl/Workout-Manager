@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_manager/injection.dart';
-import 'package:workout_manager/presentation/auth/bloc/bloc/auth_bloc.dart';
+import 'package:workout_manager/presentation/auth/bloc/auth_bloc.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
 
 

@@ -7,9 +7,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:workout_manager/presentation/splash_page.dart';
+import 'package:workout_manager/presentation/splash/splash_page.dart';
 import 'package:workout_manager/presentation/sign_in/pages/sign_in_page.dart';
-import 'package:workout_manager/presentation/sign_in/pages/main_page.dart';
+import 'package:workout_manager/presentation/main/main_page.dart';
 
 abstract class Routes {
   static const splashPage = '/';
