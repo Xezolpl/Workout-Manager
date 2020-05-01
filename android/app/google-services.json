@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "118821827396",
+    "firebase_url": "https://workout-manager-28615.firebaseio.com",
+    "project_id": "workout-manager-28615",
+    "storage_bucket": "workout-manager-28615.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:118821827396:android:06730994aeae7ea8811d11",
+        "android_client_info": {
+          "package_name": "pl.xezolpl.workout_manager"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "118821827396-3f20a4t00jorltnspnh6dtvqkt0l47t2.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "pl.xezolpl.workout_manager",
+            "certificate_hash": "3f7e192ec74abc118c974d79336d957a161b6ca6"
+          }
+        },
+        {
+          "client_id": "118821827396-27rh55m34s5dbhqlkp18bu7lgflujc7q.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDW2WwYoN--_p_Q0JxoZnYGfY74vBSta1Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "118821827396-27rh55m34s5dbhqlkp18bu7lgflujc7q.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
