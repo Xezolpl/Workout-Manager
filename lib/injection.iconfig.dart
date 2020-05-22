@@ -4,7 +4,7 @@
 // InjectableConfigGenerator
 // **************************************************************************
 
-import 'package:workout_manager/presentation/bottom_navigation/bloc/bottom_navigation_bloc.dart';
+import 'package:workout_manager/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_injectable_module.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_user_mapper.dart';
@@ -12,8 +12,12 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:workout_manager/infrastructure/repositories/auth_repository_impl.dart';
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
-import 'package:workout_manager/presentation/sign_in/bloc/sign_in_bloc.dart';
-import 'package:workout_manager/presentation/auth/bloc/auth_bloc.dart';
+import 'package:workout_manager/infrastructure/repositories/exercises_repository_impl.dart';
+import 'package:workout_manager/domain/repositories/exercises_repository.dart';
+import 'package:workout_manager/presentation/bloc/sign_in/sign_in_bloc.dart';
+import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
+import 'package:workout_manager/presentation/bloc/exercise_form/exercise_form_bloc.dart';
+import 'package:workout_manager/presentation/bloc/exercises/exercises_bloc.dart';
 import 'package:get_it/get_it.dart';
 
 void $initGetIt(GetIt g, {String environment}) {
@@ -25,8 +29,14 @@ void $initGetIt(GetIt g, {String environment}) {
   g.registerLazySingleton<Firestore>(() => firebaseInjectableModule.firestore);
   g.registerLazySingleton<GoogleSignIn>(
       () => firebaseInjectableModule.googleSignIn);
+  g.registerLazySingleton<IExercisesRepository>(
+      () => ExercisesRepositoryImpl(g<Firestore>()));
   g.registerFactory<SignInBloc>(() => SignInBloc(g<IAuthRepository>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthRepository>()));
+  g.registerFactory<ExerciseFormBloc>(
+      () => ExerciseFormBloc(g<IExercisesRepository>()));
+  g.registerFactory<ExercisesBloc>(
+      () => ExercisesBloc(g<IExercisesRepository>()));
 
   //Register prod Dependencies --------
   if (environment == 'prod') {

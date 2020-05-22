@@ -7,14 +7,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:auto_route/auto_route.dart';
-import 'package:workout_manager/presentation/splash/splash_page.dart';
-import 'package:workout_manager/presentation/sign_in/pages/sign_in_page.dart';
-import 'package:workout_manager/presentation/main/main_page.dart';
+import 'package:workout_manager/presentation/pages/splash_page.dart';
+import 'package:workout_manager/presentation/pages/sign_in/sign_in_page.dart';
+import 'package:workout_manager/presentation/pages/main_page.dart';
+import 'package:workout_manager/presentation/pages/exercise_form/exercise_form_page.dart';
+import 'package:workout_manager/domain/entities/exercise.dart';
 
 abstract class Routes {
   static const splashPage = '/';
   static const signInPage = '/sign-in-page';
   static const mainPage = '/main-page';
+  static const exerciseFormPage = '/exercise-form-page';
 }
 
 class Router extends RouterBase {
@@ -54,6 +57,16 @@ class Router extends RouterBase {
           builder: (context) => MainPage(key: typedArgs.key),
           settings: settings,
         );
+      case Routes.exerciseFormPage:
+        if (hasInvalidArgs<ExerciseFormPageArguments>(args, isRequired: true)) {
+          return misTypedArgsRoute<ExerciseFormPageArguments>(args);
+        }
+        final typedArgs = args as ExerciseFormPageArguments;
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => ExerciseFormPage(
+              key: typedArgs.key, editedExercise: typedArgs.editedExercise),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -80,4 +93,11 @@ class SignInPageArguments {
 class MainPageArguments {
   final Key key;
   MainPageArguments({this.key});
+}
+
+//ExerciseFormPage arguments holder class
+class ExerciseFormPageArguments {
+  final Key key;
+  final Exercise editedExercise;
+  ExerciseFormPageArguments({this.key, @required this.editedExercise});
 }

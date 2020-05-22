@@ -725,3 +725,346 @@ abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
   const factory InvalidEmailAndPasswordCombination() =
       _$InvalidEmailAndPasswordCombination;
 }
+
+class _$ExerciseFailureTearOff {
+  const _$ExerciseFailureTearOff();
+
+  Unexpected unexpected() {
+    return const Unexpected();
+  }
+
+  UnableToUpdate unableToUpdate() {
+    return const UnableToUpdate();
+  }
+
+  InsufficientPermissions insufficientPermissions() {
+    return const InsufficientPermissions();
+  }
+}
+
+// ignore: unused_element
+const $ExerciseFailure = _$ExerciseFailureTearOff();
+
+mixin _$ExerciseFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result insufficientPermissions(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result insufficientPermissions(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result insufficientPermissions(InsufficientPermissions value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result insufficientPermissions(InsufficientPermissions value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $ExerciseFailureCopyWith<$Res> {
+  factory $ExerciseFailureCopyWith(
+          ExerciseFailure value, $Res Function(ExerciseFailure) then) =
+      _$ExerciseFailureCopyWithImpl<$Res>;
+}
+
+class _$ExerciseFailureCopyWithImpl<$Res>
+    implements $ExerciseFailureCopyWith<$Res> {
+  _$ExerciseFailureCopyWithImpl(this._value, this._then);
+
+  final ExerciseFailure _value;
+  // ignore: unused_field
+  final $Res Function(ExerciseFailure) _then;
+}
+
+abstract class $UnexpectedCopyWith<$Res> {
+  factory $UnexpectedCopyWith(
+          Unexpected value, $Res Function(Unexpected) then) =
+      _$UnexpectedCopyWithImpl<$Res>;
+}
+
+class _$UnexpectedCopyWithImpl<$Res> extends _$ExerciseFailureCopyWithImpl<$Res>
+    implements $UnexpectedCopyWith<$Res> {
+  _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
+      : super(_value, (v) => _then(v as Unexpected));
+
+  @override
+  Unexpected get _value => super._value as Unexpected;
+}
+
+class _$Unexpected implements Unexpected {
+  const _$Unexpected();
+
+  @override
+  String toString() {
+    return 'ExerciseFailure.unexpected()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is Unexpected);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result insufficientPermissions(),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return unexpected();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result insufficientPermissions(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result insufficientPermissions(InsufficientPermissions value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return unexpected(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result insufficientPermissions(InsufficientPermissions value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unexpected != null) {
+      return unexpected(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class Unexpected implements ExerciseFailure {
+  const factory Unexpected() = _$Unexpected;
+}
+
+abstract class $UnableToUpdateCopyWith<$Res> {
+  factory $UnableToUpdateCopyWith(
+          UnableToUpdate value, $Res Function(UnableToUpdate) then) =
+      _$UnableToUpdateCopyWithImpl<$Res>;
+}
+
+class _$UnableToUpdateCopyWithImpl<$Res>
+    extends _$ExerciseFailureCopyWithImpl<$Res>
+    implements $UnableToUpdateCopyWith<$Res> {
+  _$UnableToUpdateCopyWithImpl(
+      UnableToUpdate _value, $Res Function(UnableToUpdate) _then)
+      : super(_value, (v) => _then(v as UnableToUpdate));
+
+  @override
+  UnableToUpdate get _value => super._value as UnableToUpdate;
+}
+
+class _$UnableToUpdate implements UnableToUpdate {
+  const _$UnableToUpdate();
+
+  @override
+  String toString() {
+    return 'ExerciseFailure.unableToUpdate()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is UnableToUpdate);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result insufficientPermissions(),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return unableToUpdate();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result insufficientPermissions(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unableToUpdate != null) {
+      return unableToUpdate();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result insufficientPermissions(InsufficientPermissions value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return unableToUpdate(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result insufficientPermissions(InsufficientPermissions value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (unableToUpdate != null) {
+      return unableToUpdate(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class UnableToUpdate implements ExerciseFailure {
+  const factory UnableToUpdate() = _$UnableToUpdate;
+}
+
+abstract class $InsufficientPermissionsCopyWith<$Res> {
+  factory $InsufficientPermissionsCopyWith(InsufficientPermissions value,
+          $Res Function(InsufficientPermissions) then) =
+      _$InsufficientPermissionsCopyWithImpl<$Res>;
+}
+
+class _$InsufficientPermissionsCopyWithImpl<$Res>
+    extends _$ExerciseFailureCopyWithImpl<$Res>
+    implements $InsufficientPermissionsCopyWith<$Res> {
+  _$InsufficientPermissionsCopyWithImpl(InsufficientPermissions _value,
+      $Res Function(InsufficientPermissions) _then)
+      : super(_value, (v) => _then(v as InsufficientPermissions));
+
+  @override
+  InsufficientPermissions get _value => super._value as InsufficientPermissions;
+}
+
+class _$InsufficientPermissions implements InsufficientPermissions {
+  const _$InsufficientPermissions();
+
+  @override
+  String toString() {
+    return 'ExerciseFailure.insufficientPermissions()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InsufficientPermissions);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result unexpected(),
+    @required Result unableToUpdate(),
+    @required Result insufficientPermissions(),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return insufficientPermissions();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result unexpected(),
+    Result unableToUpdate(),
+    Result insufficientPermissions(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (insufficientPermissions != null) {
+      return insufficientPermissions();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result unexpected(Unexpected value),
+    @required Result unableToUpdate(UnableToUpdate value),
+    @required Result insufficientPermissions(InsufficientPermissions value),
+  }) {
+    assert(unexpected != null);
+    assert(unableToUpdate != null);
+    assert(insufficientPermissions != null);
+    return insufficientPermissions(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result unexpected(Unexpected value),
+    Result unableToUpdate(UnableToUpdate value),
+    Result insufficientPermissions(InsufficientPermissions value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (insufficientPermissions != null) {
+      return insufficientPermissions(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InsufficientPermissions implements ExerciseFailure {
+  const factory InsufficientPermissions() = _$InsufficientPermissions;
+}

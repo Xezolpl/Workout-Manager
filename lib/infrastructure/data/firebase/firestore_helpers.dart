@@ -17,8 +17,6 @@ extension FirestoreX on Firestore {
 }
 
 extension DocumentReferenceX on DocumentReference {
-  CollectionReference get noteCollection => collection('notes');
+  CollectionReference get exercisesCollection => collection('exercises');
 
-  /// Nested subcollection under a [noteCollection]'s document.
-  CollectionReference get todoCollection => collection('todos');
 }

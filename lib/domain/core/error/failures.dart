@@ -16,3 +16,10 @@ abstract class AuthFailure with _$AuthFailure {
   const factory AuthFailure.invalidEmailAndPasswordCombination() =
       InvalidEmailAndPasswordCombination;
 }
+
+@freezed
+abstract class ExerciseFailure with _$ExerciseFailure{
+  const factory ExerciseFailure.unexpected() = Unexpected;  
+  const factory ExerciseFailure.unableToUpdate() = UnableToUpdate;  
+  const factory ExerciseFailure.insufficientPermissions() = InsufficientPermissions;  
+}
