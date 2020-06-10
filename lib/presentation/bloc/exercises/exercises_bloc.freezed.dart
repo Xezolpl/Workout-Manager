@@ -23,7 +23,7 @@ class _$ExercisesEventTearOff {
   }
 
   _ExercisesReceived exercisesReceived(
-      Either<ExerciseFailure, List<Exercise>> failuresOrExercises) {
+      Either<FirebaseFailure, List<Exercise>> failuresOrExercises) {
     return _ExercisesReceived(
       failuresOrExercises,
     );
@@ -40,14 +40,14 @@ mixin _$ExercisesEvent {
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
-            Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+            Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
-        Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+        Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -120,7 +120,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
-            Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+            Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
@@ -134,7 +134,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
-        Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+        Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -239,7 +239,7 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
-            Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+            Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
@@ -253,7 +253,7 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
-        Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+        Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -303,7 +303,7 @@ abstract class _$ExercisesReceivedCopyWith<$Res> {
   factory _$ExercisesReceivedCopyWith(
           _ExercisesReceived value, $Res Function(_ExercisesReceived) then) =
       __$ExercisesReceivedCopyWithImpl<$Res>;
-  $Res call({Either<ExerciseFailure, List<Exercise>> failuresOrExercises});
+  $Res call({Either<FirebaseFailure, List<Exercise>> failuresOrExercises});
 }
 
 class __$ExercisesReceivedCopyWithImpl<$Res>
@@ -323,7 +323,7 @@ class __$ExercisesReceivedCopyWithImpl<$Res>
     return _then(_ExercisesReceived(
       failuresOrExercises == freezed
           ? _value.failuresOrExercises
-          : failuresOrExercises as Either<ExerciseFailure, List<Exercise>>,
+          : failuresOrExercises as Either<FirebaseFailure, List<Exercise>>,
     ));
   }
 }
@@ -333,7 +333,7 @@ class _$_ExercisesReceived implements _ExercisesReceived {
       : assert(failuresOrExercises != null);
 
   @override
-  final Either<ExerciseFailure, List<Exercise>> failuresOrExercises;
+  final Either<FirebaseFailure, List<Exercise>> failuresOrExercises;
 
   @override
   String toString() {
@@ -365,7 +365,7 @@ class _$_ExercisesReceived implements _ExercisesReceived {
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
-            Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+            Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
@@ -379,7 +379,7 @@ class _$_ExercisesReceived implements _ExercisesReceived {
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
-        Either<ExerciseFailure, List<Exercise>> failuresOrExercises),
+        Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -420,10 +420,10 @@ class _$_ExercisesReceived implements _ExercisesReceived {
 
 abstract class _ExercisesReceived implements ExercisesEvent {
   const factory _ExercisesReceived(
-          Either<ExerciseFailure, List<Exercise>> failuresOrExercises) =
+          Either<FirebaseFailure, List<Exercise>> failuresOrExercises) =
       _$_ExercisesReceived;
 
-  Either<ExerciseFailure, List<Exercise>> get failuresOrExercises;
+  Either<FirebaseFailure, List<Exercise>> get failuresOrExercises;
   _$ExercisesReceivedCopyWith<_ExercisesReceived> get copyWith;
 }
 
@@ -444,7 +444,7 @@ class _$ExercisesStateTearOff {
     );
   }
 
-  LoadFailure loadFailure(ExerciseFailure failure) {
+  LoadFailure loadFailure(FirebaseFailure failure) {
     return LoadFailure(
       failure,
     );
@@ -460,14 +460,14 @@ mixin _$ExercisesState {
     @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(List<Exercise> exercises),
-    @required Result loadFailure(ExerciseFailure failure),
+    @required Result loadFailure(FirebaseFailure failure),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result initial(),
     Result loadInProgress(),
     Result loadSuccess(List<Exercise> exercises),
-    Result loadFailure(ExerciseFailure failure),
+    Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   });
   @optionalTypeArgs
@@ -538,7 +538,7 @@ class _$Initial implements Initial {
     @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(List<Exercise> exercises),
-    @required Result loadFailure(ExerciseFailure failure),
+    @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -553,7 +553,7 @@ class _$Initial implements Initial {
     Result initial(),
     Result loadInProgress(),
     Result loadSuccess(List<Exercise> exercises),
-    Result loadFailure(ExerciseFailure failure),
+    Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -638,7 +638,7 @@ class _$LoadInProgress implements LoadInProgress {
     @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(List<Exercise> exercises),
-    @required Result loadFailure(ExerciseFailure failure),
+    @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -653,7 +653,7 @@ class _$LoadInProgress implements LoadInProgress {
     Result initial(),
     Result loadInProgress(),
     Result loadSuccess(List<Exercise> exercises),
-    Result loadFailure(ExerciseFailure failure),
+    Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -759,7 +759,7 @@ class _$LoadSuccess implements LoadSuccess {
     @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(List<Exercise> exercises),
-    @required Result loadFailure(ExerciseFailure failure),
+    @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -774,7 +774,7 @@ class _$LoadSuccess implements LoadSuccess {
     Result initial(),
     Result loadInProgress(),
     Result loadSuccess(List<Exercise> exercises),
-    Result loadFailure(ExerciseFailure failure),
+    Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -827,9 +827,9 @@ abstract class $LoadFailureCopyWith<$Res> {
   factory $LoadFailureCopyWith(
           LoadFailure value, $Res Function(LoadFailure) then) =
       _$LoadFailureCopyWithImpl<$Res>;
-  $Res call({ExerciseFailure failure});
+  $Res call({FirebaseFailure failure});
 
-  $ExerciseFailureCopyWith<$Res> get failure;
+  $FirebaseFailureCopyWith<$Res> get failure;
 }
 
 class _$LoadFailureCopyWithImpl<$Res> extends _$ExercisesStateCopyWithImpl<$Res>
@@ -846,16 +846,16 @@ class _$LoadFailureCopyWithImpl<$Res> extends _$ExercisesStateCopyWithImpl<$Res>
     Object failure = freezed,
   }) {
     return _then(LoadFailure(
-      failure == freezed ? _value.failure : failure as ExerciseFailure,
+      failure == freezed ? _value.failure : failure as FirebaseFailure,
     ));
   }
 
   @override
-  $ExerciseFailureCopyWith<$Res> get failure {
+  $FirebaseFailureCopyWith<$Res> get failure {
     if (_value.failure == null) {
       return null;
     }
-    return $ExerciseFailureCopyWith<$Res>(_value.failure, (value) {
+    return $FirebaseFailureCopyWith<$Res>(_value.failure, (value) {
       return _then(_value.copyWith(failure: value));
     });
   }
@@ -865,7 +865,7 @@ class _$LoadFailure implements LoadFailure {
   const _$LoadFailure(this.failure) : assert(failure != null);
 
   @override
-  final ExerciseFailure failure;
+  final FirebaseFailure failure;
 
   @override
   String toString() {
@@ -894,7 +894,7 @@ class _$LoadFailure implements LoadFailure {
     @required Result initial(),
     @required Result loadInProgress(),
     @required Result loadSuccess(List<Exercise> exercises),
-    @required Result loadFailure(ExerciseFailure failure),
+    @required Result loadFailure(FirebaseFailure failure),
   }) {
     assert(initial != null);
     assert(loadInProgress != null);
@@ -909,7 +909,7 @@ class _$LoadFailure implements LoadFailure {
     Result initial(),
     Result loadInProgress(),
     Result loadSuccess(List<Exercise> exercises),
-    Result loadFailure(ExerciseFailure failure),
+    Result loadFailure(FirebaseFailure failure),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -952,8 +952,8 @@ class _$LoadFailure implements LoadFailure {
 }
 
 abstract class LoadFailure implements ExercisesState {
-  const factory LoadFailure(ExerciseFailure failure) = _$LoadFailure;
+  const factory LoadFailure(FirebaseFailure failure) = _$LoadFailure;
 
-  ExerciseFailure get failure;
+  FirebaseFailure get failure;
   $LoadFailureCopyWith<LoadFailure> get copyWith;
 }

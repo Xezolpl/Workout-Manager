@@ -16,7 +16,7 @@ part 'exercises_bloc.freezed.dart';
 @injectable
 class ExercisesBloc extends Bloc<ExercisesEvent, ExercisesState> {
   final IExercisesRepository _repository;
-  StreamSubscription<Either<ExerciseFailure, List<Exercise>>>
+  StreamSubscription<Either<FirebaseFailure, List<Exercise>>>
       _exercisesStreamSubscription;
   ExercisesBloc(this._repository);
 

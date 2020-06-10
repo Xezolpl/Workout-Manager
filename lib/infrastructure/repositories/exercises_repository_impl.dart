@@ -15,20 +15,19 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
   ExercisesRepositoryImpl(this._firestore);
 
   @override
-  Stream<Either<ExerciseFailure, List<Exercise>>> watchAll() async* {
+  Stream<Either<FirebaseFailure, List<Exercise>>> watchAll() async* {
     final userDoc = await _firestore.userDocument();
     try {
-      //yield* _firestore.collection('exercises').orderBy('name');
-      Stream<Either<ExerciseFailure, List<Exercise>>> userExercises = userDoc
+      Stream<Either<FirebaseFailure, List<Exercise>>> userExercises = userDoc
           .exercisesCollection
           .snapshots()
-          .map((snap) => right<ExerciseFailure, List<Exercise>>(snap.documents
+          .map((snap) => right<FirebaseFailure, List<Exercise>>(snap.documents
               .map((doc) => Exercise.fromJson(doc.data))
               .toList()));
 
-      Stream<Either<ExerciseFailure, List<Exercise>>> globalExercises =
+      Stream<Either<FirebaseFailure, List<Exercise>>> globalExercises =
           _firestore.collection('exercises').snapshots().map((snap) =>
-              right<ExerciseFailure, List<Exercise>>(snap.documents
+              right<FirebaseFailure, List<Exercise>>(snap.documents
                   .map((doc) => Exercise.fromJson(doc.data))
                   .toList()));
 
@@ -39,27 +38,27 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
       yield* stream;
     } catch (e) {
       if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
-        yield left(const ExerciseFailure.insufficientPermissions());
+        yield left(const FirebaseFailure.insufficientPermissions());
       } else {
-        yield left(const ExerciseFailure.unexpected());
+        yield left(const FirebaseFailure.unexpected());
       }
     }
   }
 
   @override
-  Stream<Either<ExerciseFailure, List<Exercise>>> watchByParty(
+  Stream<Either<FirebaseFailure, List<Exercise>>> watchByParty(
       String partyStr) async* {
     final userDoc = await _firestore.userDocument();
-    Stream<Either<ExerciseFailure, List<Exercise>>> userExercises = userDoc
+    Stream<Either<FirebaseFailure, List<Exercise>>> userExercises = userDoc
           .exercisesCollection
           .snapshots()
-          .map((snap) => right<ExerciseFailure, List<Exercise>>(snap.documents
+          .map((snap) => right<FirebaseFailure, List<Exercise>>(snap.documents
               .map((doc) => Exercise.fromJson(doc.data))
               .toList()));
 
-      Stream<Either<ExerciseFailure, List<Exercise>>> globalExercises =
+      Stream<Either<FirebaseFailure, List<Exercise>>> globalExercises =
           _firestore.collection('exercises').snapshots().map((snap) =>
-              right<ExerciseFailure, List<Exercise>>(snap.documents
+              right<FirebaseFailure, List<Exercise>>(snap.documents
                   .map((doc) => Exercise.fromJson(doc.data))
                   .toList()));
 
@@ -73,7 +72,7 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
   }
 
   @override
-  Future<Either<ExerciseFailure, Unit>> insert(Exercise exercise) async {
+  Future<Either<FirebaseFailure, Unit>> insert(Exercise exercise) async {
     try {
       final userDoc = await _firestore.userDocument();
 
@@ -84,15 +83,15 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
-        return left(const ExerciseFailure.insufficientPermissions());
+        return left(const FirebaseFailure.insufficientPermissions());
       } else {
-        return left(const ExerciseFailure.unexpected());
+        return left(const FirebaseFailure.unexpected());
       }
     }
   }
 
   @override
-  Future<Either<ExerciseFailure, Unit>> update(Exercise exercise) async {
+  Future<Either<FirebaseFailure, Unit>> update(Exercise exercise) async {
     try {
       final userDoc = await _firestore.userDocument();
 
@@ -102,15 +101,15 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
-        return left(const ExerciseFailure.insufficientPermissions());
+        return left(const FirebaseFailure.insufficientPermissions());
       } else {
-        return left(const ExerciseFailure.unexpected());
+        return left(const FirebaseFailure.unexpected());
       }
     }
   }
 
   @override
-  Future<Either<ExerciseFailure, Unit>> delete(Exercise exercise) async {
+  Future<Either<FirebaseFailure, Unit>> delete(Exercise exercise) async {
     try {
       final userDoc = await _firestore.userDocument();
 
@@ -118,9 +117,9 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
-        return left(const ExerciseFailure.insufficientPermissions());
+        return left(const FirebaseFailure.insufficientPermissions());
       } else {
-        return left(const ExerciseFailure.unexpected());
+        return left(const FirebaseFailure.unexpected());
       }
     }
   }

@@ -726,8 +726,8 @@ abstract class InvalidEmailAndPasswordCombination implements AuthFailure {
       _$InvalidEmailAndPasswordCombination;
 }
 
-class _$ExerciseFailureTearOff {
-  const _$ExerciseFailureTearOff();
+class _$FirebaseFailureTearOff {
+  const _$FirebaseFailureTearOff();
 
   Unexpected unexpected() {
     return const Unexpected();
@@ -743,9 +743,9 @@ class _$ExerciseFailureTearOff {
 }
 
 // ignore: unused_element
-const $ExerciseFailure = _$ExerciseFailureTearOff();
+const $FirebaseFailure = _$FirebaseFailureTearOff();
 
-mixin _$ExerciseFailure {
+mixin _$FirebaseFailure {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result unexpected(),
@@ -774,19 +774,19 @@ mixin _$ExerciseFailure {
   });
 }
 
-abstract class $ExerciseFailureCopyWith<$Res> {
-  factory $ExerciseFailureCopyWith(
-          ExerciseFailure value, $Res Function(ExerciseFailure) then) =
-      _$ExerciseFailureCopyWithImpl<$Res>;
+abstract class $FirebaseFailureCopyWith<$Res> {
+  factory $FirebaseFailureCopyWith(
+          FirebaseFailure value, $Res Function(FirebaseFailure) then) =
+      _$FirebaseFailureCopyWithImpl<$Res>;
 }
 
-class _$ExerciseFailureCopyWithImpl<$Res>
-    implements $ExerciseFailureCopyWith<$Res> {
-  _$ExerciseFailureCopyWithImpl(this._value, this._then);
+class _$FirebaseFailureCopyWithImpl<$Res>
+    implements $FirebaseFailureCopyWith<$Res> {
+  _$FirebaseFailureCopyWithImpl(this._value, this._then);
 
-  final ExerciseFailure _value;
+  final FirebaseFailure _value;
   // ignore: unused_field
-  final $Res Function(ExerciseFailure) _then;
+  final $Res Function(FirebaseFailure) _then;
 }
 
 abstract class $UnexpectedCopyWith<$Res> {
@@ -795,7 +795,7 @@ abstract class $UnexpectedCopyWith<$Res> {
       _$UnexpectedCopyWithImpl<$Res>;
 }
 
-class _$UnexpectedCopyWithImpl<$Res> extends _$ExerciseFailureCopyWithImpl<$Res>
+class _$UnexpectedCopyWithImpl<$Res> extends _$FirebaseFailureCopyWithImpl<$Res>
     implements $UnexpectedCopyWith<$Res> {
   _$UnexpectedCopyWithImpl(Unexpected _value, $Res Function(Unexpected) _then)
       : super(_value, (v) => _then(v as Unexpected));
@@ -809,7 +809,7 @@ class _$Unexpected implements Unexpected {
 
   @override
   String toString() {
-    return 'ExerciseFailure.unexpected()';
+    return 'FirebaseFailure.unexpected()';
   }
 
   @override
@@ -877,7 +877,7 @@ class _$Unexpected implements Unexpected {
   }
 }
 
-abstract class Unexpected implements ExerciseFailure {
+abstract class Unexpected implements FirebaseFailure {
   const factory Unexpected() = _$Unexpected;
 }
 
@@ -888,7 +888,7 @@ abstract class $UnableToUpdateCopyWith<$Res> {
 }
 
 class _$UnableToUpdateCopyWithImpl<$Res>
-    extends _$ExerciseFailureCopyWithImpl<$Res>
+    extends _$FirebaseFailureCopyWithImpl<$Res>
     implements $UnableToUpdateCopyWith<$Res> {
   _$UnableToUpdateCopyWithImpl(
       UnableToUpdate _value, $Res Function(UnableToUpdate) _then)
@@ -903,7 +903,7 @@ class _$UnableToUpdate implements UnableToUpdate {
 
   @override
   String toString() {
-    return 'ExerciseFailure.unableToUpdate()';
+    return 'FirebaseFailure.unableToUpdate()';
   }
 
   @override
@@ -971,7 +971,7 @@ class _$UnableToUpdate implements UnableToUpdate {
   }
 }
 
-abstract class UnableToUpdate implements ExerciseFailure {
+abstract class UnableToUpdate implements FirebaseFailure {
   const factory UnableToUpdate() = _$UnableToUpdate;
 }
 
@@ -982,7 +982,7 @@ abstract class $InsufficientPermissionsCopyWith<$Res> {
 }
 
 class _$InsufficientPermissionsCopyWithImpl<$Res>
-    extends _$ExerciseFailureCopyWithImpl<$Res>
+    extends _$FirebaseFailureCopyWithImpl<$Res>
     implements $InsufficientPermissionsCopyWith<$Res> {
   _$InsufficientPermissionsCopyWithImpl(InsufficientPermissions _value,
       $Res Function(InsufficientPermissions) _then)
@@ -997,7 +997,7 @@ class _$InsufficientPermissions implements InsufficientPermissions {
 
   @override
   String toString() {
-    return 'ExerciseFailure.insufficientPermissions()';
+    return 'FirebaseFailure.insufficientPermissions()';
   }
 
   @override
@@ -1065,6 +1065,6 @@ class _$InsufficientPermissions implements InsufficientPermissions {
   }
 }
 
-abstract class InsufficientPermissions implements ExerciseFailure {
+abstract class InsufficientPermissions implements FirebaseFailure {
   const factory InsufficientPermissions() = _$InsufficientPermissions;
 }

@@ -25,7 +25,7 @@ class ExerciseNameTFF extends StatelessWidget {
             decoration: inputWithSuffixDecoration(label: 'Exercise', suffixIcon: Icon(Icons.terrain),),
             maxLength: EXERCISE_NAME_MAX_LENGTH,
             maxLengthEnforced: true,
-            buildCounter: (BuildContext,
+            buildCounter: (buildContext,
                     {int currentLength, bool isFocused, int maxLength}) =>
                 isFocused
                     ? Text('$currentLength / $EXERCISE_NAME_MAX_LENGTH')

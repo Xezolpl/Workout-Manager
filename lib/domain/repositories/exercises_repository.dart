@@ -4,9 +4,9 @@ import 'package:workout_manager/domain/entities/exercise.dart';
 
 
 abstract class IExercisesRepository{
-  Stream<Either<ExerciseFailure, List<Exercise>>> watchAll();
-  Stream<Either<ExerciseFailure, List<Exercise>>> watchByParty(String partyStr);
-  Future<Either<ExerciseFailure, Unit>> insert(Exercise exercise);
-  Future<Either<ExerciseFailure, Unit>> update(Exercise exercise);
-  Future<Either<ExerciseFailure, Unit>> delete(Exercise exercise);
+  Stream<Either<FirebaseFailure, List<Exercise>>> watchAll();
+  Stream<Either<FirebaseFailure, List<Exercise>>> watchByParty(String partyStr);
+  Future<Either<FirebaseFailure, Unit>> insert(Exercise exercise);
+  Future<Either<FirebaseFailure, Unit>> update(Exercise exercise);
+  Future<Either<FirebaseFailure, Unit>> delete(Exercise exercise);
 }

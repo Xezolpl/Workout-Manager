@@ -2,7 +2,6 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_manager/domain/core/constants/exercise_constants.dart';
 import 'package:workout_manager/presentation/bloc/exercise_form/exercise_form_bloc.dart';
 import 'package:workout_manager/presentation/pages/exercise_form/widgets/exercise_description_tff.dart';
 

@@ -7,7 +7,7 @@ abstract class ExerciseFormState with _$ExerciseFormState{
     @required bool showErrorMessages,
     @required bool isEditing,
     @required bool isSaving,
-    @required Option<Either<ExerciseFailure,Unit>> saveFailureOrSuccessOption,
+    @required Option<Either<FirebaseFailure,Unit>> saveFailureOrSuccessOption,
     String primaryParty,
     String secondaryParty,
     String tetriaryParty,

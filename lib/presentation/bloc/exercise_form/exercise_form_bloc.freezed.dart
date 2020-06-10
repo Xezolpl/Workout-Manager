@@ -751,7 +751,7 @@ class _$ExerciseFormStateTearOff {
       @required
           bool isSaving,
       @required
-          Option<Either<ExerciseFailure, Unit>> saveFailureOrSuccessOption,
+          Option<Either<FirebaseFailure, Unit>> saveFailureOrSuccessOption,
       String primaryParty,
       String secondaryParty,
       String tetriaryParty}) {
@@ -776,7 +776,7 @@ mixin _$ExerciseFormState {
   bool get showErrorMessages;
   bool get isEditing;
   bool get isSaving;
-  Option<Either<ExerciseFailure, Unit>> get saveFailureOrSuccessOption;
+  Option<Either<FirebaseFailure, Unit>> get saveFailureOrSuccessOption;
   String get primaryParty;
   String get secondaryParty;
   String get tetriaryParty;
@@ -793,7 +793,7 @@ abstract class $ExerciseFormStateCopyWith<$Res> {
       bool showErrorMessages,
       bool isEditing,
       bool isSaving,
-      Option<Either<ExerciseFailure, Unit>> saveFailureOrSuccessOption,
+      Option<Either<FirebaseFailure, Unit>> saveFailureOrSuccessOption,
       String primaryParty,
       String secondaryParty,
       String tetriaryParty});
@@ -829,7 +829,7 @@ class _$ExerciseFormStateCopyWithImpl<$Res>
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption as Option<Either<ExerciseFailure, Unit>>,
+          : saveFailureOrSuccessOption as Option<Either<FirebaseFailure, Unit>>,
       primaryParty: primaryParty == freezed
           ? _value.primaryParty
           : primaryParty as String,
@@ -864,7 +864,7 @@ abstract class _$ExerciseFormStateCopyWith<$Res>
       bool showErrorMessages,
       bool isEditing,
       bool isSaving,
-      Option<Either<ExerciseFailure, Unit>> saveFailureOrSuccessOption,
+      Option<Either<FirebaseFailure, Unit>> saveFailureOrSuccessOption,
       String primaryParty,
       String secondaryParty,
       String tetriaryParty});
@@ -903,7 +903,7 @@ class __$ExerciseFormStateCopyWithImpl<$Res>
       isSaving: isSaving == freezed ? _value.isSaving : isSaving as bool,
       saveFailureOrSuccessOption: saveFailureOrSuccessOption == freezed
           ? _value.saveFailureOrSuccessOption
-          : saveFailureOrSuccessOption as Option<Either<ExerciseFailure, Unit>>,
+          : saveFailureOrSuccessOption as Option<Either<FirebaseFailure, Unit>>,
       primaryParty: primaryParty == freezed
           ? _value.primaryParty
           : primaryParty as String,
@@ -942,7 +942,7 @@ class _$_ExerciseFormState implements _ExerciseFormState {
   @override
   final bool isSaving;
   @override
-  final Option<Either<ExerciseFailure, Unit>> saveFailureOrSuccessOption;
+  final Option<Either<FirebaseFailure, Unit>> saveFailureOrSuccessOption;
   @override
   final String primaryParty;
   @override
@@ -1015,7 +1015,7 @@ abstract class _ExerciseFormState implements ExerciseFormState {
       @required
           bool isSaving,
       @required
-          Option<Either<ExerciseFailure, Unit>> saveFailureOrSuccessOption,
+          Option<Either<FirebaseFailure, Unit>> saveFailureOrSuccessOption,
       String primaryParty,
       String secondaryParty,
       String tetriaryParty}) = _$_ExerciseFormState;
@@ -1029,7 +1029,7 @@ abstract class _ExerciseFormState implements ExerciseFormState {
   @override
   bool get isSaving;
   @override
-  Option<Either<ExerciseFailure, Unit>> get saveFailureOrSuccessOption;
+  Option<Either<FirebaseFailure, Unit>> get saveFailureOrSuccessOption;
   @override
   String get primaryParty;
   @override

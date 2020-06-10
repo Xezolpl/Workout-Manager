@@ -18,8 +18,8 @@ abstract class AuthFailure with _$AuthFailure {
 }
 
 @freezed
-abstract class ExerciseFailure with _$ExerciseFailure{
-  const factory ExerciseFailure.unexpected() = Unexpected;  
-  const factory ExerciseFailure.unableToUpdate() = UnableToUpdate;  
-  const factory ExerciseFailure.insufficientPermissions() = InsufficientPermissions;  
+abstract class FirebaseFailure with _$FirebaseFailure{
+  const factory FirebaseFailure.unexpected() = Unexpected;  
+  const factory FirebaseFailure.unableToUpdate() = UnableToUpdate;  
+  const factory FirebaseFailure.insufficientPermissions() = InsufficientPermissions;  
 }

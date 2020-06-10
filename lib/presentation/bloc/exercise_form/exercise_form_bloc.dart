@@ -56,7 +56,7 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
             saveFailureOrSuccessOption: none());
       },
       saved: (e) async* {
-        Either<ExerciseFailure, Unit> failureOrSuccess;
+        Either<FirebaseFailure, Unit> failureOrSuccess;
 
         yield state.copyWith(isSaving: true);
 

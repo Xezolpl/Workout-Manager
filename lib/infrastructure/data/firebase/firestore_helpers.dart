@@ -18,5 +18,6 @@ extension FirestoreX on Firestore {
 
 extension DocumentReferenceX on DocumentReference {
   CollectionReference get exercisesCollection => collection('exercises');
+  CollectionReference get workoutsCollection => collection('workouts');
 
 }

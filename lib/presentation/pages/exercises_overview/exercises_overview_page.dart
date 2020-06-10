@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_manager/domain/repositories/exercises_repository.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
 import 'package:workout_manager/presentation/bloc/exercises/exercises_bloc.dart';
@@ -10,9 +9,8 @@ import 'package:workout_manager/presentation/routes/router.gr.dart';
 import 'exercise_card.dart';
 
 class ExercisesPage extends StatelessWidget {
-  IExercisesRepository repository;
-  Widget bNavBar;
-  ExercisesPage(this.repository, this.bNavBar);
+  final Widget bNavBar;
+  ExercisesPage({@required this.bNavBar});
 
   @override
   Widget build(BuildContext context) {

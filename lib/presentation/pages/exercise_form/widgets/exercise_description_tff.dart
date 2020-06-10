@@ -30,7 +30,7 @@ class ExerciseDescriptionTFF extends StatelessWidget {
             maxLines: null,
             maxLength: EXERCISE_DESCRIPTION_MAX_LENGTH,
             maxLengthEnforced: true,
-            buildCounter: (BuildContext,
+            buildCounter: (buildContext,
                     {int currentLength, bool isFocused, int maxLength}) =>
                 isFocused
                     ? Text('$currentLength / $EXERCISE_DESCRIPTION_MAX_LENGTH')
