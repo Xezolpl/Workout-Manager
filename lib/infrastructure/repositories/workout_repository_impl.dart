@@ -1,10 +1,14 @@
 import 'package:flutter/services.dart';
+import 'package:injectable/injectable.dart';
 import 'package:workout_manager/domain/entities/workout.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
 import 'package:workout_manager/domain/repositories/workout_repository.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firestore_helpers.dart';
 
+
+@lazySingleton
+@RegisterAs(IWorkoutRepository)
 class WorkoutRepositoryImpl implements IWorkoutRepository {
   final Firestore _firestore;
 
@@ -51,10 +55,9 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     try {
       final userDoc = await _firestore.userDocument();
 
-      await userDoc.exercisesCollection
+      await userDoc.workoutsCollection
           .document(workout.id)
           .setData(workout.toJson());
-
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
@@ -70,7 +73,7 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     try {
       final userDoc = await _firestore.userDocument();
 
-      await userDoc.exercisesCollection
+      await userDoc.workoutsCollection
           .document(workout.id)
           .updateData(workout.toJson());
       return right(unit);
@@ -88,7 +91,7 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     try {
       final userDoc = await _firestore.userDocument();
 
-      await userDoc.exercisesCollection.document(workout.id).delete();
+      await userDoc.workoutsCollection.document(workout.id).delete();
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {

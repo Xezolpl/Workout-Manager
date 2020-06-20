@@ -8,7 +8,6 @@ import 'package:workout_manager/domain/entities/user.dart';
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_user_mapper.dart';
 
-@prod
 @lazySingleton
 @RegisterAs(IAuthRepository)
 class AuthRepositoryImpl implements IAuthRepository {

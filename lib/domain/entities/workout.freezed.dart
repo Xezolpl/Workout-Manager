@@ -19,13 +19,11 @@ class _$WorkoutTearOff {
       {@required String id,
       @required String exerciseId,
       @required DateTime date,
-      @required int type,
       @required List<String> series}) {
     return _Workout(
       id: id,
       exerciseId: exerciseId,
       date: date,
-      type: type,
       series: series,
     );
   }
@@ -38,7 +36,6 @@ mixin _$Workout {
   String get id;
   String get exerciseId;
   DateTime get date;
-  int get type;
   List<String> get series;
 
   Map<String, dynamic> toJson();
@@ -48,12 +45,7 @@ mixin _$Workout {
 abstract class $WorkoutCopyWith<$Res> {
   factory $WorkoutCopyWith(Workout value, $Res Function(Workout) then) =
       _$WorkoutCopyWithImpl<$Res>;
-  $Res call(
-      {String id,
-      String exerciseId,
-      DateTime date,
-      int type,
-      List<String> series});
+  $Res call({String id, String exerciseId, DateTime date, List<String> series});
 }
 
 class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
@@ -68,7 +60,6 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
     Object id = freezed,
     Object exerciseId = freezed,
     Object date = freezed,
-    Object type = freezed,
     Object series = freezed,
   }) {
     return _then(_value.copyWith(
@@ -76,7 +67,6 @@ class _$WorkoutCopyWithImpl<$Res> implements $WorkoutCopyWith<$Res> {
       exerciseId:
           exerciseId == freezed ? _value.exerciseId : exerciseId as String,
       date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as int,
       series: series == freezed ? _value.series : series as List<String>,
     ));
   }
@@ -86,12 +76,7 @@ abstract class _$WorkoutCopyWith<$Res> implements $WorkoutCopyWith<$Res> {
   factory _$WorkoutCopyWith(_Workout value, $Res Function(_Workout) then) =
       __$WorkoutCopyWithImpl<$Res>;
   @override
-  $Res call(
-      {String id,
-      String exerciseId,
-      DateTime date,
-      int type,
-      List<String> series});
+  $Res call({String id, String exerciseId, DateTime date, List<String> series});
 }
 
 class __$WorkoutCopyWithImpl<$Res> extends _$WorkoutCopyWithImpl<$Res>
@@ -107,7 +92,6 @@ class __$WorkoutCopyWithImpl<$Res> extends _$WorkoutCopyWithImpl<$Res>
     Object id = freezed,
     Object exerciseId = freezed,
     Object date = freezed,
-    Object type = freezed,
     Object series = freezed,
   }) {
     return _then(_Workout(
@@ -115,7 +99,6 @@ class __$WorkoutCopyWithImpl<$Res> extends _$WorkoutCopyWithImpl<$Res>
       exerciseId:
           exerciseId == freezed ? _value.exerciseId : exerciseId as String,
       date: date == freezed ? _value.date : date as DateTime,
-      type: type == freezed ? _value.type : type as int,
       series: series == freezed ? _value.series : series as List<String>,
     ));
   }
@@ -127,12 +110,10 @@ class _$_Workout implements _Workout {
       {@required this.id,
       @required this.exerciseId,
       @required this.date,
-      @required this.type,
       @required this.series})
       : assert(id != null),
         assert(exerciseId != null),
         assert(date != null),
-        assert(type != null),
         assert(series != null);
 
   factory _$_Workout.fromJson(Map<String, dynamic> json) =>
@@ -145,13 +126,11 @@ class _$_Workout implements _Workout {
   @override
   final DateTime date;
   @override
-  final int type;
-  @override
   final List<String> series;
 
   @override
   String toString() {
-    return 'Workout(id: $id, exerciseId: $exerciseId, date: $date, type: $type, series: $series)';
+    return 'Workout(id: $id, exerciseId: $exerciseId, date: $date, series: $series)';
   }
 
   @override
@@ -165,8 +144,6 @@ class _$_Workout implements _Workout {
                     .equals(other.exerciseId, exerciseId)) &&
             (identical(other.date, date) ||
                 const DeepCollectionEquality().equals(other.date, date)) &&
-            (identical(other.type, type) ||
-                const DeepCollectionEquality().equals(other.type, type)) &&
             (identical(other.series, series) ||
                 const DeepCollectionEquality().equals(other.series, series)));
   }
@@ -177,7 +154,6 @@ class _$_Workout implements _Workout {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(exerciseId) ^
       const DeepCollectionEquality().hash(date) ^
-      const DeepCollectionEquality().hash(type) ^
       const DeepCollectionEquality().hash(series);
 
   @override
@@ -195,7 +171,6 @@ abstract class _Workout implements Workout {
       {@required String id,
       @required String exerciseId,
       @required DateTime date,
-      @required int type,
       @required List<String> series}) = _$_Workout;
 
   factory _Workout.fromJson(Map<String, dynamic> json) = _$_Workout.fromJson;
@@ -206,8 +181,6 @@ abstract class _Workout implements Workout {
   String get exerciseId;
   @override
   DateTime get date;
-  @override
-  int get type;
   @override
   List<String> get series;
   @override

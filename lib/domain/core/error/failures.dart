@@ -6,6 +6,8 @@ part 'failures.freezed.dart';
 abstract class ValueFailure with _$ValueFailure{
   const factory ValueFailure.emailRegex() = EmailRegex;
   const factory ValueFailure.passwordRegex() = PasswordRegex;
+
+  const factory ValueFailure.invalidInput() = InvalidInput;
 }
 
 @freezed

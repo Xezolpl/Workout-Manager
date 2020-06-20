@@ -4,12 +4,13 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
 import 'package:workout_manager/presentation/bloc/exercises/exercises_bloc.dart';
+import 'package:workout_manager/presentation/pages/widgets/bottom_nav_bar.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
 
 import 'exercise_card.dart';
 
 class ExercisesPage extends StatelessWidget {
-  final Widget bNavBar;
+  final MainBottomNavBar bNavBar;
   ExercisesPage({@required this.bNavBar});
 
   @override
@@ -38,7 +39,13 @@ class ExercisesPage extends StatelessWidget {
                   loadSuccess: (state) {
                     return ListView.builder(
                       itemBuilder: (context, index) {
-                        return ExerciseCard(exercise: state.exercises[index]);
+                        return Padding(
+                          padding: const EdgeInsets.all(5.0),
+                          child: GestureDetector(
+                            onTap: () => bNavBar.changePage(1, exercise: state.exercises[index]),
+                              child: ExerciseCard(
+                                  exercise: state.exercises[index])),
+                        );
                       },
                       itemCount: state.exercises.length,
                     );
@@ -56,10 +63,9 @@ class ExercisesPage extends StatelessWidget {
                 Router.navigator.pushNamed(Routes.exerciseFormPage,
                     arguments: ExerciseFormPageArguments(editedExercise: null));
               },
+              child: Center(child: Icon(Icons.add)),
             ),
           ),
         ));
   }
 }
-
-class ExercisesPageBody {}

@@ -12,9 +12,10 @@ T _$identity<T>(T value) => value;
 class _$BottomNavigationEventTearOff {
   const _$BottomNavigationEventTearOff();
 
-  PageChanged pageChanged(int newIndex) {
+  PageChanged pageChanged(int newIndex, {Exercise exercise}) {
     return PageChanged(
       newIndex,
+      exercise: exercise,
     );
   }
 }
@@ -24,6 +25,7 @@ const $BottomNavigationEvent = _$BottomNavigationEventTearOff();
 
 mixin _$BottomNavigationEvent {
   int get newIndex;
+  Exercise get exercise;
 
   $BottomNavigationEventCopyWith<BottomNavigationEvent> get copyWith;
 }
@@ -32,7 +34,9 @@ abstract class $BottomNavigationEventCopyWith<$Res> {
   factory $BottomNavigationEventCopyWith(BottomNavigationEvent value,
           $Res Function(BottomNavigationEvent) then) =
       _$BottomNavigationEventCopyWithImpl<$Res>;
-  $Res call({int newIndex});
+  $Res call({int newIndex, Exercise exercise});
+
+  $ExerciseCopyWith<$Res> get exercise;
 }
 
 class _$BottomNavigationEventCopyWithImpl<$Res>
@@ -46,10 +50,22 @@ class _$BottomNavigationEventCopyWithImpl<$Res>
   @override
   $Res call({
     Object newIndex = freezed,
+    Object exercise = freezed,
   }) {
     return _then(_value.copyWith(
       newIndex: newIndex == freezed ? _value.newIndex : newIndex as int,
+      exercise: exercise == freezed ? _value.exercise : exercise as Exercise,
     ));
+  }
+
+  @override
+  $ExerciseCopyWith<$Res> get exercise {
+    if (_value.exercise == null) {
+      return null;
+    }
+    return $ExerciseCopyWith<$Res>(_value.exercise, (value) {
+      return _then(_value.copyWith(exercise: value));
+    });
   }
 }
 
@@ -59,7 +75,10 @@ abstract class $PageChangedCopyWith<$Res>
           PageChanged value, $Res Function(PageChanged) then) =
       _$PageChangedCopyWithImpl<$Res>;
   @override
-  $Res call({int newIndex});
+  $Res call({int newIndex, Exercise exercise});
+
+  @override
+  $ExerciseCopyWith<$Res> get exercise;
 }
 
 class _$PageChangedCopyWithImpl<$Res>
@@ -75,22 +94,27 @@ class _$PageChangedCopyWithImpl<$Res>
   @override
   $Res call({
     Object newIndex = freezed,
+    Object exercise = freezed,
   }) {
     return _then(PageChanged(
       newIndex == freezed ? _value.newIndex : newIndex as int,
+      exercise: exercise == freezed ? _value.exercise : exercise as Exercise,
     ));
   }
 }
 
 class _$PageChanged implements PageChanged {
-  const _$PageChanged(this.newIndex) : assert(newIndex != null);
+  const _$PageChanged(this.newIndex, {this.exercise})
+      : assert(newIndex != null);
 
   @override
   final int newIndex;
+  @override
+  final Exercise exercise;
 
   @override
   String toString() {
-    return 'BottomNavigationEvent.pageChanged(newIndex: $newIndex)';
+    return 'BottomNavigationEvent.pageChanged(newIndex: $newIndex, exercise: $exercise)';
   }
 
   @override
@@ -99,12 +123,17 @@ class _$PageChanged implements PageChanged {
         (other is PageChanged &&
             (identical(other.newIndex, newIndex) ||
                 const DeepCollectionEquality()
-                    .equals(other.newIndex, newIndex)));
+                    .equals(other.newIndex, newIndex)) &&
+            (identical(other.exercise, exercise) ||
+                const DeepCollectionEquality()
+                    .equals(other.exercise, exercise)));
   }
 
   @override
   int get hashCode =>
-      runtimeType.hashCode ^ const DeepCollectionEquality().hash(newIndex);
+      runtimeType.hashCode ^
+      const DeepCollectionEquality().hash(newIndex) ^
+      const DeepCollectionEquality().hash(exercise);
 
   @override
   $PageChangedCopyWith<PageChanged> get copyWith =>
@@ -112,10 +141,12 @@ class _$PageChanged implements PageChanged {
 }
 
 abstract class PageChanged implements BottomNavigationEvent {
-  const factory PageChanged(int newIndex) = _$PageChanged;
+  const factory PageChanged(int newIndex, {Exercise exercise}) = _$PageChanged;
 
   @override
   int get newIndex;
+  @override
+  Exercise get exercise;
   @override
   $PageChangedCopyWith<PageChanged> get copyWith;
 }
@@ -127,8 +158,10 @@ class _$BottomNavigationStateTearOff {
     return const ExercisesPageS();
   }
 
-  WorkoutPageS workoutPage() {
-    return const WorkoutPageS();
+  WorkoutPageS workoutPage(Exercise exercise) {
+    return WorkoutPageS(
+      exercise,
+    );
   }
 
   AccountPageS accountPage() {
@@ -143,13 +176,13 @@ mixin _$BottomNavigationState {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result exercisesPage(),
-    @required Result workoutPage(),
+    @required Result workoutPage(Exercise exercise),
     @required Result accountPage(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result exercisesPage(),
-    Result workoutPage(),
+    Result workoutPage(Exercise exercise),
     Result accountPage(),
     @required Result orElse(),
   });
@@ -220,7 +253,7 @@ class _$ExercisesPageS implements ExercisesPageS {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result exercisesPage(),
-    @required Result workoutPage(),
+    @required Result workoutPage(Exercise exercise),
     @required Result accountPage(),
   }) {
     assert(exercisesPage != null);
@@ -233,7 +266,7 @@ class _$ExercisesPageS implements ExercisesPageS {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result exercisesPage(),
-    Result workoutPage(),
+    Result workoutPage(Exercise exercise),
     Result accountPage(),
     @required Result orElse(),
   }) {
@@ -281,6 +314,9 @@ abstract class $WorkoutPageSCopyWith<$Res> {
   factory $WorkoutPageSCopyWith(
           WorkoutPageS value, $Res Function(WorkoutPageS) then) =
       _$WorkoutPageSCopyWithImpl<$Res>;
+  $Res call({Exercise exercise});
+
+  $ExerciseCopyWith<$Res> get exercise;
 }
 
 class _$WorkoutPageSCopyWithImpl<$Res>
@@ -292,48 +328,79 @@ class _$WorkoutPageSCopyWithImpl<$Res>
 
   @override
   WorkoutPageS get _value => super._value as WorkoutPageS;
+
+  @override
+  $Res call({
+    Object exercise = freezed,
+  }) {
+    return _then(WorkoutPageS(
+      exercise == freezed ? _value.exercise : exercise as Exercise,
+    ));
+  }
+
+  @override
+  $ExerciseCopyWith<$Res> get exercise {
+    if (_value.exercise == null) {
+      return null;
+    }
+    return $ExerciseCopyWith<$Res>(_value.exercise, (value) {
+      return _then(_value.copyWith(exercise: value));
+    });
+  }
 }
 
 class _$WorkoutPageS implements WorkoutPageS {
-  const _$WorkoutPageS();
+  const _$WorkoutPageS(this.exercise) : assert(exercise != null);
+
+  @override
+  final Exercise exercise;
 
   @override
   String toString() {
-    return 'BottomNavigationState.workoutPage()';
+    return 'BottomNavigationState.workoutPage(exercise: $exercise)';
   }
 
   @override
   bool operator ==(dynamic other) {
-    return identical(this, other) || (other is WorkoutPageS);
+    return identical(this, other) ||
+        (other is WorkoutPageS &&
+            (identical(other.exercise, exercise) ||
+                const DeepCollectionEquality()
+                    .equals(other.exercise, exercise)));
   }
 
   @override
-  int get hashCode => runtimeType.hashCode;
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exercise);
+
+  @override
+  $WorkoutPageSCopyWith<WorkoutPageS> get copyWith =>
+      _$WorkoutPageSCopyWithImpl<WorkoutPageS>(this, _$identity);
 
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result exercisesPage(),
-    @required Result workoutPage(),
+    @required Result workoutPage(Exercise exercise),
     @required Result accountPage(),
   }) {
     assert(exercisesPage != null);
     assert(workoutPage != null);
     assert(accountPage != null);
-    return workoutPage();
+    return workoutPage(exercise);
   }
 
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result exercisesPage(),
-    Result workoutPage(),
+    Result workoutPage(Exercise exercise),
     Result accountPage(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
     if (workoutPage != null) {
-      return workoutPage();
+      return workoutPage(exercise);
     }
     return orElse();
   }
@@ -368,7 +435,10 @@ class _$WorkoutPageS implements WorkoutPageS {
 }
 
 abstract class WorkoutPageS implements BottomNavigationState {
-  const factory WorkoutPageS() = _$WorkoutPageS;
+  const factory WorkoutPageS(Exercise exercise) = _$WorkoutPageS;
+
+  Exercise get exercise;
+  $WorkoutPageSCopyWith<WorkoutPageS> get copyWith;
 }
 
 abstract class $AccountPageSCopyWith<$Res> {
@@ -408,7 +478,7 @@ class _$AccountPageS implements AccountPageS {
   @optionalTypeArgs
   Result when<Result extends Object>({
     @required Result exercisesPage(),
-    @required Result workoutPage(),
+    @required Result workoutPage(Exercise exercise),
     @required Result accountPage(),
   }) {
     assert(exercisesPage != null);
@@ -421,7 +491,7 @@ class _$AccountPageS implements AccountPageS {
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result exercisesPage(),
-    Result workoutPage(),
+    Result workoutPage(Exercise exercise),
     Result accountPage(),
     @required Result orElse(),
   }) {

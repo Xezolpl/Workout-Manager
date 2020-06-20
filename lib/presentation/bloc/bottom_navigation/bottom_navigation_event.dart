@@ -2,5 +2,5 @@ part of 'bottom_navigation_bloc.dart';
 
 @freezed
 abstract class BottomNavigationEvent with _$BottomNavigationEvent {
-  const factory BottomNavigationEvent.pageChanged(int newIndex) = PageChanged;
+  const factory BottomNavigationEvent.pageChanged(int newIndex, {Exercise exercise}) = PageChanged;
 }

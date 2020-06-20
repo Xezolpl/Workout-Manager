@@ -15,16 +15,24 @@ class ExercisePartySelector extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     bool isPrimary = index == 0;
+    bool firstUsage = true;
+
     String selectedParty =
         isPrimary ? EXERCISE_PARTIES[1] : EXERCISE_PARTIES[0];
+        
     return BlocConsumer<ExerciseFormBloc, ExerciseFormState>(
       listener: (context, state) {
-        if (isPrimary)
-          selectedParty = state.primaryParty;
-        else if (index == 1)
-          selectedParty = state.secondaryParty;
-        else
-          selectedParty = state.tetriaryParty;
+        if (state.isEditing && firstUsage) {
+          firstUsage = false;
+          selectedParty = state.exercise.parties[index];
+        } else {
+          if (isPrimary)
+            selectedParty = state.primaryParty;
+          else if (index == 1)
+            selectedParty = state.secondaryParty;
+          else
+            selectedParty = state.tetriaryParty;
+        }
       },
       builder: (context, state) {
         return Padding(

@@ -36,13 +36,11 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
       },
       nameChanged: (e) async* {
         yield state.copyWith(
-            exercise: state.exercise.copyWith(name: e.name),
-            saveFailureOrSuccessOption: none());
+            exercise: state.exercise.copyWith(name: e.name));
       },
       descriptionChanged: (e) async* {
         yield state.copyWith(
-            exercise: state.exercise.copyWith(description: e.description),
-            saveFailureOrSuccessOption: none());
+            exercise: state.exercise.copyWith(description: e.description));
       },
       partyChanged: (e) async* {
         yield state.copyWith(
@@ -52,19 +50,17 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
             exercise: state.exercise.copyWith(
                 parties: state.exercise.parties
                   ..removeAt(e.index)
-                  ..insert(e.index, e.party)),
-            saveFailureOrSuccessOption: none());
+                  ..insert(e.index, e.party)));
       },
       saved: (e) async* {
         Either<FirebaseFailure, Unit> failureOrSuccess;
 
-        yield state.copyWith(isSaving: true);
+        yield state.copyWith(
+            isSaving: true, saveFailureOrSuccessOption: none());
 
-        if (state.saveFailureOrSuccessOption.isNone()) {
-          failureOrSuccess = state.isEditing
-              ? await _exercisesRepository.update(state.exercise)
-              : await _exercisesRepository.insert(state.exercise);
-        }
+        failureOrSuccess = state.isEditing
+            ? await _exercisesRepository.update(state.exercise)
+            : await _exercisesRepository.insert(state.exercise);
 
         yield state.copyWith(
           showErrorMessages: true,

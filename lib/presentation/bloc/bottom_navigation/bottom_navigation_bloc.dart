@@ -4,6 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
+import 'package:workout_manager/domain/entities/exercise.dart';
 
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';
@@ -15,7 +16,7 @@ class BottomNavigationBloc
   int currentIndex = 1;
 
   @override
-  BottomNavigationState get initialState => BottomNavigationState.workoutPage();
+  BottomNavigationState get initialState => BottomNavigationState.workoutPage(Exercise.empty()); //get from cashe?
 
   @override
   Stream<BottomNavigationState> mapEventToState(
@@ -25,11 +26,9 @@ class BottomNavigationBloc
     if (currentIndex == 0) {
       yield BottomNavigationState.exercisesPage();
     } else if (currentIndex == 1) {
-      yield BottomNavigationState.workoutPage();
+      yield BottomNavigationState.workoutPage(event.exercise ?? Exercise.empty());
     } else if (currentIndex == 2) {
       yield BottomNavigationState.accountPage();
     }
   }
-
-  
 }

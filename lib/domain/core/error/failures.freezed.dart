@@ -19,6 +19,10 @@ class _$ValueFailureTearOff {
   PasswordRegex passwordRegex() {
     return const PasswordRegex();
   }
+
+  InvalidInput invalidInput() {
+    return const InvalidInput();
+  }
 }
 
 // ignore: unused_element
@@ -29,22 +33,26 @@ mixin _$ValueFailure {
   Result when<Result extends Object>({
     @required Result emailRegex(),
     @required Result passwordRegex(),
+    @required Result invalidInput(),
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
     Result emailRegex(),
     Result passwordRegex(),
+    Result invalidInput(),
     @required Result orElse(),
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
     @required Result emailRegex(EmailRegex value),
     @required Result passwordRegex(PasswordRegex value),
+    @required Result invalidInput(InvalidInput value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
     Result emailRegex(EmailRegex value),
     Result passwordRegex(PasswordRegex value),
+    Result invalidInput(InvalidInput value),
     @required Result orElse(),
   });
 }
@@ -99,9 +107,11 @@ class _$EmailRegex implements EmailRegex {
   Result when<Result extends Object>({
     @required Result emailRegex(),
     @required Result passwordRegex(),
+    @required Result invalidInput(),
   }) {
     assert(emailRegex != null);
     assert(passwordRegex != null);
+    assert(invalidInput != null);
     return emailRegex();
   }
 
@@ -110,6 +120,7 @@ class _$EmailRegex implements EmailRegex {
   Result maybeWhen<Result extends Object>({
     Result emailRegex(),
     Result passwordRegex(),
+    Result invalidInput(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -124,9 +135,11 @@ class _$EmailRegex implements EmailRegex {
   Result map<Result extends Object>({
     @required Result emailRegex(EmailRegex value),
     @required Result passwordRegex(PasswordRegex value),
+    @required Result invalidInput(InvalidInput value),
   }) {
     assert(emailRegex != null);
     assert(passwordRegex != null);
+    assert(invalidInput != null);
     return emailRegex(this);
   }
 
@@ -135,6 +148,7 @@ class _$EmailRegex implements EmailRegex {
   Result maybeMap<Result extends Object>({
     Result emailRegex(EmailRegex value),
     Result passwordRegex(PasswordRegex value),
+    Result invalidInput(InvalidInput value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -186,9 +200,11 @@ class _$PasswordRegex implements PasswordRegex {
   Result when<Result extends Object>({
     @required Result emailRegex(),
     @required Result passwordRegex(),
+    @required Result invalidInput(),
   }) {
     assert(emailRegex != null);
     assert(passwordRegex != null);
+    assert(invalidInput != null);
     return passwordRegex();
   }
 
@@ -197,6 +213,7 @@ class _$PasswordRegex implements PasswordRegex {
   Result maybeWhen<Result extends Object>({
     Result emailRegex(),
     Result passwordRegex(),
+    Result invalidInput(),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -211,9 +228,11 @@ class _$PasswordRegex implements PasswordRegex {
   Result map<Result extends Object>({
     @required Result emailRegex(EmailRegex value),
     @required Result passwordRegex(PasswordRegex value),
+    @required Result invalidInput(InvalidInput value),
   }) {
     assert(emailRegex != null);
     assert(passwordRegex != null);
+    assert(invalidInput != null);
     return passwordRegex(this);
   }
 
@@ -222,6 +241,7 @@ class _$PasswordRegex implements PasswordRegex {
   Result maybeMap<Result extends Object>({
     Result emailRegex(EmailRegex value),
     Result passwordRegex(PasswordRegex value),
+    Result invalidInput(InvalidInput value),
     @required Result orElse(),
   }) {
     assert(orElse != null);
@@ -234,6 +254,99 @@ class _$PasswordRegex implements PasswordRegex {
 
 abstract class PasswordRegex implements ValueFailure {
   const factory PasswordRegex() = _$PasswordRegex;
+}
+
+abstract class $InvalidInputCopyWith<$Res> {
+  factory $InvalidInputCopyWith(
+          InvalidInput value, $Res Function(InvalidInput) then) =
+      _$InvalidInputCopyWithImpl<$Res>;
+}
+
+class _$InvalidInputCopyWithImpl<$Res> extends _$ValueFailureCopyWithImpl<$Res>
+    implements $InvalidInputCopyWith<$Res> {
+  _$InvalidInputCopyWithImpl(
+      InvalidInput _value, $Res Function(InvalidInput) _then)
+      : super(_value, (v) => _then(v as InvalidInput));
+
+  @override
+  InvalidInput get _value => super._value as InvalidInput;
+}
+
+class _$InvalidInput implements InvalidInput {
+  const _$InvalidInput();
+
+  @override
+  String toString() {
+    return 'ValueFailure.invalidInput()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is InvalidInput);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result emailRegex(),
+    @required Result passwordRegex(),
+    @required Result invalidInput(),
+  }) {
+    assert(emailRegex != null);
+    assert(passwordRegex != null);
+    assert(invalidInput != null);
+    return invalidInput();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result emailRegex(),
+    Result passwordRegex(),
+    Result invalidInput(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidInput != null) {
+      return invalidInput();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result emailRegex(EmailRegex value),
+    @required Result passwordRegex(PasswordRegex value),
+    @required Result invalidInput(InvalidInput value),
+  }) {
+    assert(emailRegex != null);
+    assert(passwordRegex != null);
+    assert(invalidInput != null);
+    return invalidInput(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result emailRegex(EmailRegex value),
+    Result passwordRegex(PasswordRegex value),
+    Result invalidInput(InvalidInput value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (invalidInput != null) {
+      return invalidInput(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class InvalidInput implements ValueFailure {
+  const factory InvalidInput() = _$InvalidInput;
 }
 
 class _$AuthFailureTearOff {
