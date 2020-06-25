@@ -27,6 +27,25 @@ mixin _$BottomNavigationEvent {
   int get newIndex;
   Exercise get exercise;
 
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result pageChanged(int newIndex, Exercise exercise),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result pageChanged(int newIndex, Exercise exercise),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result pageChanged(PageChanged value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result pageChanged(PageChanged value),
+    @required Result orElse(),
+  });
+
   $BottomNavigationEventCopyWith<BottomNavigationEvent> get copyWith;
 }
 
@@ -138,6 +157,50 @@ class _$PageChanged implements PageChanged {
   @override
   $PageChangedCopyWith<PageChanged> get copyWith =>
       _$PageChangedCopyWithImpl<PageChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result pageChanged(int newIndex, Exercise exercise),
+  }) {
+    assert(pageChanged != null);
+    return pageChanged(newIndex, exercise);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result pageChanged(int newIndex, Exercise exercise),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pageChanged != null) {
+      return pageChanged(newIndex, exercise);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result pageChanged(PageChanged value),
+  }) {
+    assert(pageChanged != null);
+    return pageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result pageChanged(PageChanged value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (pageChanged != null) {
+      return pageChanged(this);
+    }
+    return orElse();
+  }
 }
 
 abstract class PageChanged implements BottomNavigationEvent {

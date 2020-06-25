@@ -15,6 +15,25 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
   ExercisesRepositoryImpl(this._firestore);
 
   @override
+  Stream<Either<FirebaseFailure, List<Exercise>>> watch(String exerciseId) async* {
+    final userDoc = await _firestore.userDocument();
+    try {
+      yield* userDoc
+          .exercisesCollection
+          .snapshots()
+          .map((snap) => right<FirebaseFailure, List<Exercise>>(snap.documents
+              .map((doc) => Exercise.fromJson(doc.data))
+              .where((exercise) => exercise.id == exerciseId )
+              .toList()));
+    } catch (e) {
+      if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
+        yield left(const FirebaseFailure.insufficientPermissions());
+      } else {
+        yield left(const FirebaseFailure.unexpected());
+      }
+    }
+  }
+  @override
   Stream<Either<FirebaseFailure, List<Exercise>>> watchAll() async* {
     final userDoc = await _firestore.userDocument();
     try {
@@ -84,6 +103,8 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }
@@ -102,6 +123,8 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }
@@ -118,6 +141,8 @@ class ExercisesRepositoryImpl implements IExercisesRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }

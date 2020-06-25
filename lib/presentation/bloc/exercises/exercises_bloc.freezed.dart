@@ -12,6 +12,12 @@ T _$identity<T>(T value) => value;
 class _$ExercisesEventTearOff {
   const _$ExercisesEventTearOff();
 
+  _WatchStarted watchStarted(String exerciseId) {
+    return _WatchStarted(
+      exerciseId,
+    );
+  }
+
   _WatchAllStarted watchAllStarted() {
     return const _WatchAllStarted();
   }
@@ -36,6 +42,7 @@ const $ExercisesEvent = _$ExercisesEventTearOff();
 mixin _$ExercisesEvent {
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result watchStarted(String exerciseId),
     @required Result watchAllStarted(),
     @required Result watchByPartyStarted(String party),
     @required
@@ -44,6 +51,7 @@ mixin _$ExercisesEvent {
   });
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result watchStarted(String exerciseId),
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
@@ -52,12 +60,14 @@ mixin _$ExercisesEvent {
   });
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result watchStarted(_WatchStarted value),
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchByPartyStarted(_WatchByPartyStarted value),
     @required Result exercisesReceived(_ExercisesReceived value),
   });
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result watchStarted(_WatchStarted value),
     Result watchAllStarted(_WatchAllStarted value),
     Result watchByPartyStarted(_WatchByPartyStarted value),
     Result exercisesReceived(_ExercisesReceived value),
@@ -78,6 +88,134 @@ class _$ExercisesEventCopyWithImpl<$Res>
   final ExercisesEvent _value;
   // ignore: unused_field
   final $Res Function(ExercisesEvent) _then;
+}
+
+abstract class _$WatchStartedCopyWith<$Res> {
+  factory _$WatchStartedCopyWith(
+          _WatchStarted value, $Res Function(_WatchStarted) then) =
+      __$WatchStartedCopyWithImpl<$Res>;
+  $Res call({String exerciseId});
+}
+
+class __$WatchStartedCopyWithImpl<$Res>
+    extends _$ExercisesEventCopyWithImpl<$Res>
+    implements _$WatchStartedCopyWith<$Res> {
+  __$WatchStartedCopyWithImpl(
+      _WatchStarted _value, $Res Function(_WatchStarted) _then)
+      : super(_value, (v) => _then(v as _WatchStarted));
+
+  @override
+  _WatchStarted get _value => super._value as _WatchStarted;
+
+  @override
+  $Res call({
+    Object exerciseId = freezed,
+  }) {
+    return _then(_WatchStarted(
+      exerciseId == freezed ? _value.exerciseId : exerciseId as String,
+    ));
+  }
+}
+
+class _$_WatchStarted implements _WatchStarted {
+  const _$_WatchStarted(this.exerciseId) : assert(exerciseId != null);
+
+  @override
+  final String exerciseId;
+
+  @override
+  String toString() {
+    return 'ExercisesEvent.watchStarted(exerciseId: $exerciseId)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _WatchStarted &&
+            (identical(other.exerciseId, exerciseId) ||
+                const DeepCollectionEquality()
+                    .equals(other.exerciseId, exerciseId)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(exerciseId);
+
+  @override
+  _$WatchStartedCopyWith<_WatchStarted> get copyWith =>
+      __$WatchStartedCopyWithImpl<_WatchStarted>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result watchStarted(String exerciseId),
+    @required Result watchAllStarted(),
+    @required Result watchByPartyStarted(String party),
+    @required
+        Result exercisesReceived(
+            Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
+  }) {
+    assert(watchStarted != null);
+    assert(watchAllStarted != null);
+    assert(watchByPartyStarted != null);
+    assert(exercisesReceived != null);
+    return watchStarted(exerciseId);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result watchStarted(String exerciseId),
+    Result watchAllStarted(),
+    Result watchByPartyStarted(String party),
+    Result exercisesReceived(
+        Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchStarted != null) {
+      return watchStarted(exerciseId);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result watchStarted(_WatchStarted value),
+    @required Result watchAllStarted(_WatchAllStarted value),
+    @required Result watchByPartyStarted(_WatchByPartyStarted value),
+    @required Result exercisesReceived(_ExercisesReceived value),
+  }) {
+    assert(watchStarted != null);
+    assert(watchAllStarted != null);
+    assert(watchByPartyStarted != null);
+    assert(exercisesReceived != null);
+    return watchStarted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result watchStarted(_WatchStarted value),
+    Result watchAllStarted(_WatchAllStarted value),
+    Result watchByPartyStarted(_WatchByPartyStarted value),
+    Result exercisesReceived(_ExercisesReceived value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (watchStarted != null) {
+      return watchStarted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _WatchStarted implements ExercisesEvent {
+  const factory _WatchStarted(String exerciseId) = _$_WatchStarted;
+
+  String get exerciseId;
+  _$WatchStartedCopyWith<_WatchStarted> get copyWith;
 }
 
 abstract class _$WatchAllStartedCopyWith<$Res> {
@@ -116,12 +254,14 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result watchStarted(String exerciseId),
     @required Result watchAllStarted(),
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
             Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -131,6 +271,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result watchStarted(String exerciseId),
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
@@ -147,10 +288,12 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result watchStarted(_WatchStarted value),
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchByPartyStarted(_WatchByPartyStarted value),
     @required Result exercisesReceived(_ExercisesReceived value),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -160,6 +303,7 @@ class _$_WatchAllStarted implements _WatchAllStarted {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result watchStarted(_WatchStarted value),
     Result watchAllStarted(_WatchAllStarted value),
     Result watchByPartyStarted(_WatchByPartyStarted value),
     Result exercisesReceived(_ExercisesReceived value),
@@ -235,12 +379,14 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result watchStarted(String exerciseId),
     @required Result watchAllStarted(),
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
             Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -250,6 +396,7 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result watchStarted(String exerciseId),
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
@@ -266,10 +413,12 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result watchStarted(_WatchStarted value),
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchByPartyStarted(_WatchByPartyStarted value),
     @required Result exercisesReceived(_ExercisesReceived value),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -279,6 +428,7 @@ class _$_WatchByPartyStarted implements _WatchByPartyStarted {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result watchStarted(_WatchStarted value),
     Result watchAllStarted(_WatchAllStarted value),
     Result watchByPartyStarted(_WatchByPartyStarted value),
     Result exercisesReceived(_ExercisesReceived value),
@@ -361,12 +511,14 @@ class _$_ExercisesReceived implements _ExercisesReceived {
   @override
   @optionalTypeArgs
   Result when<Result extends Object>({
+    @required Result watchStarted(String exerciseId),
     @required Result watchAllStarted(),
     @required Result watchByPartyStarted(String party),
     @required
         Result exercisesReceived(
             Either<FirebaseFailure, List<Exercise>> failuresOrExercises),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -376,6 +528,7 @@ class _$_ExercisesReceived implements _ExercisesReceived {
   @override
   @optionalTypeArgs
   Result maybeWhen<Result extends Object>({
+    Result watchStarted(String exerciseId),
     Result watchAllStarted(),
     Result watchByPartyStarted(String party),
     Result exercisesReceived(
@@ -392,10 +545,12 @@ class _$_ExercisesReceived implements _ExercisesReceived {
   @override
   @optionalTypeArgs
   Result map<Result extends Object>({
+    @required Result watchStarted(_WatchStarted value),
     @required Result watchAllStarted(_WatchAllStarted value),
     @required Result watchByPartyStarted(_WatchByPartyStarted value),
     @required Result exercisesReceived(_ExercisesReceived value),
   }) {
+    assert(watchStarted != null);
     assert(watchAllStarted != null);
     assert(watchByPartyStarted != null);
     assert(exercisesReceived != null);
@@ -405,6 +560,7 @@ class _$_ExercisesReceived implements _ExercisesReceived {
   @override
   @optionalTypeArgs
   Result maybeMap<Result extends Object>({
+    Result watchStarted(_WatchStarted value),
     Result watchAllStarted(_WatchAllStarted value),
     Result watchByPartyStarted(_WatchByPartyStarted value),
     Result exercisesReceived(_ExercisesReceived value),

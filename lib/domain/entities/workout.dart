@@ -15,10 +15,10 @@ abstract class Workout with _$Workout {
   }) = _Workout;
 
   factory Workout.empty() => Workout(
-    id: Uuid().v4().toString(),
+    id: '',
     exerciseId: '',
     date: DateTime.now(),
-    series: [], // W:R:D jak czegos nie ma to "-", D w sekundach
+    series: [],
   );
 
   factory Workout.fromJson(Map<String, dynamic> json) => _$WorkoutFromJson(json);

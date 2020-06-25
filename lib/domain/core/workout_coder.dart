@@ -9,8 +9,8 @@ enum EXERCISE_OPTIONS {
 enum WorkoutFields {Weight, Reps, Duration}
 
 abstract class WorkoutCoder {
-  static String encode({int weight, int reps, int duration}) {
-    return '$weight:$reps:$duration';
+  static String encode(int weight, int reps, int duration) {
+    return '${weight ?? -1}:${reps ?? -1}:${duration ?? -1}';
   }
 
   static Series decode(String seriesStr) {

@@ -37,6 +37,12 @@ class ExercisesBloc extends Bloc<ExercisesEvent, ExercisesState> {
       _exercisesStreamSubscription?.cancel();
       _exercisesStreamSubscription = _repository.watchByParty(e.party).listen(
           (exercises) => add(ExercisesEvent.exercisesReceived(exercises)));
+    }, 
+     watchStarted: (e) async* {
+      yield const ExercisesState.loadInProgress();
+      _exercisesStreamSubscription?.cancel();
+      _exercisesStreamSubscription = _repository.watch(e.exerciseId).listen(
+          (exercise) => add(ExercisesEvent.exercisesReceived(exercise)));
     }, exercisesReceived: (e) async* {
       yield e.failuresOrExercises.fold((l) => ExercisesState.loadFailure(l),
           (r) => ExercisesState.loadSuccess(r));
@@ -45,7 +51,7 @@ class ExercisesBloc extends Bloc<ExercisesEvent, ExercisesState> {
 
    @override
   Future<void> close() async {
-    await _exercisesStreamSubscription.cancel();
+    await _exercisesStreamSubscription?.cancel();
     return super.close();
   }
 }

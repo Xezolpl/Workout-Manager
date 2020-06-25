@@ -6,7 +6,6 @@ import 'package:dartz/dartz.dart';
 import 'package:workout_manager/domain/repositories/workout_repository.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firestore_helpers.dart';
 
-
 @lazySingleton
 @RegisterAs(IWorkoutRepository)
 class WorkoutRepositoryImpl implements IWorkoutRepository {
@@ -19,9 +18,9 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     final userDoc = await _firestore.userDocument();
     try {
       yield* userDoc.workoutsCollection.snapshots().map((snap) =>
-          right<FirebaseFailure, List<Workout>>(snap.documents
-              .map((doc) => Workout.fromJson(doc.data))
-              .toList()));
+          right<FirebaseFailure, List<Workout>>(
+              snap.documents.map((doc) => Workout.fromJson(doc.data)).toList()
+                ..sort((item1, item2) => item1.date.compareTo(item2.date))));
     } catch (e) {
       if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
         yield left(const FirebaseFailure.insufficientPermissions());
@@ -62,6 +61,8 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }
@@ -80,6 +81,8 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }
@@ -96,6 +99,8 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
         return left(const FirebaseFailure.insufficientPermissions());
+      } else if (e.message.contains('NOT_FOUND')) {
+        return left(const FirebaseFailure.unableToUpdate());
       } else {
         return left(const FirebaseFailure.unexpected());
       }
