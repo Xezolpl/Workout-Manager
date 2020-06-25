@@ -24,11 +24,10 @@ class CurrentWorkoutBloc
     yield* event.map(workoutChanged: (e) async* {
       yield state.copyWith(workout: e.newWorkout);
     }, seriesInserted: (e) async* {
-      List<String> series = List<String>.from(state.workout.series);
-      series.add('-1:-1:-1');
+      List<String> seriesList = List<String>.from(state.workout.series);
+      seriesList.add('-1:-1:-1');
       yield state.copyWith(
-          refresher: state.refresher + 1,
-          workout: state.workout.copyWith(series: series));
+          workout: state.workout.copyWith(series: seriesList));
     }, seriesChanged: (e) async* {
       int weight, reps, duration;
 
@@ -54,17 +53,15 @@ class CurrentWorkoutBloc
             break;
           }
       }
-      yield state
-        ..workout.copyWith(
-            series: new List<String>.from(state.workout.series
-              ..removeAt(e.seriesIndex)
-              ..insert(
-                  e.seriesIndex, WorkoutCoder.encode(weight, reps, duration))));
+
+      List<String> seriesList = new List<String>.from(state.workout.series);
+      seriesList..removeAt(e.seriesIndex)..insert(
+                  e.seriesIndex, WorkoutCoder.encode(weight, reps, duration));
+      yield state.copyWith(workout: state.workout.copyWith(series: seriesList));
     }, seriesDeleted: (e) async* {
-      yield state
-        ..workout.copyWith(
-            series: new List<String>.from(
-                state.workout.series..removeAt(e.seriesIndex)));
+      List<String> seriesList = new List<String>.from(state.workout.series);
+      seriesList.removeAt(e.seriesIndex);
+      yield state.copyWith(workout: state.workout.copyWith(series: seriesList));
     });
   }
 }

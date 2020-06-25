@@ -609,13 +609,10 @@ class _$CurrentWorkoutStateTearOff {
   const _$CurrentWorkoutStateTearOff();
 
   _CurrentWorkoutState call(
-      {@required Workout workout,
-      @required bool showErrorMessages,
-      @required int refresher}) {
+      {@required Workout workout, @required bool showErrorMessages}) {
     return _CurrentWorkoutState(
       workout: workout,
       showErrorMessages: showErrorMessages,
-      refresher: refresher,
     );
   }
 }
@@ -626,7 +623,6 @@ const $CurrentWorkoutState = _$CurrentWorkoutStateTearOff();
 mixin _$CurrentWorkoutState {
   Workout get workout;
   bool get showErrorMessages;
-  int get refresher;
 
   $CurrentWorkoutStateCopyWith<CurrentWorkoutState> get copyWith;
 }
@@ -635,7 +631,7 @@ abstract class $CurrentWorkoutStateCopyWith<$Res> {
   factory $CurrentWorkoutStateCopyWith(
           CurrentWorkoutState value, $Res Function(CurrentWorkoutState) then) =
       _$CurrentWorkoutStateCopyWithImpl<$Res>;
-  $Res call({Workout workout, bool showErrorMessages, int refresher});
+  $Res call({Workout workout, bool showErrorMessages});
 
   $WorkoutCopyWith<$Res> get workout;
 }
@@ -652,14 +648,12 @@ class _$CurrentWorkoutStateCopyWithImpl<$Res>
   $Res call({
     Object workout = freezed,
     Object showErrorMessages = freezed,
-    Object refresher = freezed,
   }) {
     return _then(_value.copyWith(
       workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
-      refresher: refresher == freezed ? _value.refresher : refresher as int,
     ));
   }
 
@@ -680,7 +674,7 @@ abstract class _$CurrentWorkoutStateCopyWith<$Res>
           $Res Function(_CurrentWorkoutState) then) =
       __$CurrentWorkoutStateCopyWithImpl<$Res>;
   @override
-  $Res call({Workout workout, bool showErrorMessages, int refresher});
+  $Res call({Workout workout, bool showErrorMessages});
 
   @override
   $WorkoutCopyWith<$Res> get workout;
@@ -700,37 +694,30 @@ class __$CurrentWorkoutStateCopyWithImpl<$Res>
   $Res call({
     Object workout = freezed,
     Object showErrorMessages = freezed,
-    Object refresher = freezed,
   }) {
     return _then(_CurrentWorkoutState(
       workout: workout == freezed ? _value.workout : workout as Workout,
       showErrorMessages: showErrorMessages == freezed
           ? _value.showErrorMessages
           : showErrorMessages as bool,
-      refresher: refresher == freezed ? _value.refresher : refresher as int,
     ));
   }
 }
 
 class _$_CurrentWorkoutState implements _CurrentWorkoutState {
   const _$_CurrentWorkoutState(
-      {@required this.workout,
-      @required this.showErrorMessages,
-      @required this.refresher})
+      {@required this.workout, @required this.showErrorMessages})
       : assert(workout != null),
-        assert(showErrorMessages != null),
-        assert(refresher != null);
+        assert(showErrorMessages != null);
 
   @override
   final Workout workout;
   @override
   final bool showErrorMessages;
-  @override
-  final int refresher;
 
   @override
   String toString() {
-    return 'CurrentWorkoutState(workout: $workout, showErrorMessages: $showErrorMessages, refresher: $refresher)';
+    return 'CurrentWorkoutState(workout: $workout, showErrorMessages: $showErrorMessages)';
   }
 
   @override
@@ -742,18 +729,14 @@ class _$_CurrentWorkoutState implements _CurrentWorkoutState {
                     .equals(other.workout, workout)) &&
             (identical(other.showErrorMessages, showErrorMessages) ||
                 const DeepCollectionEquality()
-                    .equals(other.showErrorMessages, showErrorMessages)) &&
-            (identical(other.refresher, refresher) ||
-                const DeepCollectionEquality()
-                    .equals(other.refresher, refresher)));
+                    .equals(other.showErrorMessages, showErrorMessages)));
   }
 
   @override
   int get hashCode =>
       runtimeType.hashCode ^
       const DeepCollectionEquality().hash(workout) ^
-      const DeepCollectionEquality().hash(showErrorMessages) ^
-      const DeepCollectionEquality().hash(refresher);
+      const DeepCollectionEquality().hash(showErrorMessages);
 
   @override
   _$CurrentWorkoutStateCopyWith<_CurrentWorkoutState> get copyWith =>
@@ -764,15 +747,12 @@ class _$_CurrentWorkoutState implements _CurrentWorkoutState {
 abstract class _CurrentWorkoutState implements CurrentWorkoutState {
   const factory _CurrentWorkoutState(
       {@required Workout workout,
-      @required bool showErrorMessages,
-      @required int refresher}) = _$_CurrentWorkoutState;
+      @required bool showErrorMessages}) = _$_CurrentWorkoutState;
 
   @override
   Workout get workout;
   @override
   bool get showErrorMessages;
-  @override
-  int get refresher;
   @override
   _$CurrentWorkoutStateCopyWith<_CurrentWorkoutState> get copyWith;
 }
