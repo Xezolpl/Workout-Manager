@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 
 part 'bottom_navigation_event.dart';
 part 'bottom_navigation_state.dart';

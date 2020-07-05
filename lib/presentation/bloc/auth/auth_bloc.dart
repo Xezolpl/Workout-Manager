@@ -4,7 +4,7 @@ import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
-import 'package:workout_manager/domain/entities/user.dart';
+import 'package:workout_manager/domain/entities/user/user.dart';
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
 
 part 'auth_event.dart';

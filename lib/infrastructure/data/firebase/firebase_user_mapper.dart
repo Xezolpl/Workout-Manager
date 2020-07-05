@@ -1,6 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_manager/domain/entities/user.dart';
+import 'package:workout_manager/domain/entities/user/user.dart';
 
 @lazySingleton
 class FirebaseUserMapper {
@@ -10,6 +10,7 @@ class FirebaseUserMapper {
         : User(
             uid: firebaseUser.uid,
             name: firebaseUser.displayName ?? firebaseUser.email.split('@').first,
+            photoUrl: firebaseUser.photoUrl,
             emailAddress: firebaseUser.email,
           );
   }

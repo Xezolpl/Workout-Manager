@@ -1,9 +1,9 @@
 import 'package:async/async.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
 import 'package:dartz/dartz.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/domain/repositories/exercises_repository.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firestore_helpers.dart';
 

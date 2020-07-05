@@ -11,13 +11,16 @@ import 'package:workout_manager/presentation/pages/splash_page.dart';
 import 'package:workout_manager/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:workout_manager/presentation/pages/main_page.dart';
 import 'package:workout_manager/presentation/pages/exercise_form/exercise_form_page.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
+import 'package:workout_manager/presentation/pages/measurement/measurement_page.dart';
+import 'package:workout_manager/domain/entities/measurement/measurement.dart';
 
 abstract class Routes {
   static const splashPage = '/';
   static const signInPage = '/sign-in-page';
   static const mainPage = '/main-page';
   static const exerciseFormPage = '/exercise-form-page';
+  static const measurementPage = '/measurement-page';
 }
 
 class Router extends RouterBase {
@@ -67,6 +70,17 @@ class Router extends RouterBase {
               key: typedArgs.key, editedExercise: typedArgs.editedExercise),
           settings: settings,
         );
+      case Routes.measurementPage:
+        if (hasInvalidArgs<MeasurementPageArguments>(args)) {
+          return misTypedArgsRoute<MeasurementPageArguments>(args);
+        }
+        final typedArgs =
+            args as MeasurementPageArguments ?? MeasurementPageArguments();
+        return MaterialPageRoute<dynamic>(
+          builder: (context) => MeasurementPage(
+              measurement: typedArgs.measurement, key: typedArgs.key),
+          settings: settings,
+        );
       default:
         return unknownRoutePage(settings.name);
     }
@@ -100,4 +114,11 @@ class ExerciseFormPageArguments {
   final Key key;
   final Exercise editedExercise;
   ExerciseFormPageArguments({this.key, @required this.editedExercise});
+}
+
+//MeasurementPage arguments holder class
+class MeasurementPageArguments {
+  final Measurement measurement;
+  final Key key;
+  MeasurementPageArguments({this.measurement, this.key});
 }

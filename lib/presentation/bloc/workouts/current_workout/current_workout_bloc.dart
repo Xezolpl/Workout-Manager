@@ -5,7 +5,7 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:workout_manager/domain/core/workout_coder.dart';
-import 'package:workout_manager/domain/entities/workout.dart';
+import 'package:workout_manager/domain/entities/workout/workout.dart';
 
 part 'current_workout_event.dart';
 part 'current_workout_state.dart';

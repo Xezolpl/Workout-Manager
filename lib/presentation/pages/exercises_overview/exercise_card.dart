@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/presentation/pages/exercises_overview/exercise_party_widget.dart';
 
 class ExerciseCard extends StatelessWidget {

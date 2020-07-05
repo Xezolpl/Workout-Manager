@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/workout.dart';
+import 'package:workout_manager/domain/entities/workout/workout.dart';
 
 abstract class IWorkoutRepository{
   Stream<Either<FirebaseFailure, List<Workout>>> watchAll();

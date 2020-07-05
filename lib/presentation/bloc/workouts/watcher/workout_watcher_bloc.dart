@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:workout_manager/domain/core/constants/actor_options.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/workout.dart';
+import 'package:workout_manager/domain/entities/workout/workout.dart';
 import 'package:workout_manager/domain/repositories/workout_repository.dart';
 
 part 'workout_watcher_event.dart';

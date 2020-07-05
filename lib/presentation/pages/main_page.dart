@@ -6,6 +6,7 @@ import 'package:workout_manager/presentation/bloc/bottom_navigation/bottom_navig
 import 'package:workout_manager/presentation/pages/widgets/bottom_nav_bar.dart';
 import 'package:workout_manager/presentation/pages/workout/workout_page.dart';
 
+import 'account/account_page.dart';
 import 'exercises_overview/exercises_overview_page.dart';
 
 class MainPage extends StatelessWidget {
@@ -24,13 +25,7 @@ class MainPage extends StatelessWidget {
         } else if (state is WorkoutPageS) {
           return WorkoutPage(bNavBar: navBar, exercise: state.exercise);
         } else {
-          return Scaffold(
-            appBar: AppBar(
-              title: Text('Account'),
-            ),
-            body: Container(child: Text('Account')),
-            bottomNavigationBar: navBar,
-          );
+          return AccountPage(bNavBar: navBar,);
         }
       },
     );

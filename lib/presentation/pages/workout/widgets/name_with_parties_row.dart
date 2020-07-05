@@ -1,6 +1,6 @@
 import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/exercises/exercises_bloc.dart';
 import 'package:workout_manager/presentation/pages/exercises_overview/exercise_party_widget.dart';

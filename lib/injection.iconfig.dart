@@ -15,9 +15,13 @@ import 'package:workout_manager/infrastructure/repositories/auth_repository_impl
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
 import 'package:workout_manager/infrastructure/repositories/exercises_repository_impl.dart';
 import 'package:workout_manager/domain/repositories/exercises_repository.dart';
+import 'package:workout_manager/infrastructure/repositories/measurement_repository_impl.dart';
+import 'package:workout_manager/domain/repositories/measurement_repository.dart';
 import 'package:workout_manager/infrastructure/repositories/workout_repository_impl.dart';
 import 'package:workout_manager/domain/repositories/workout_repository.dart';
+import 'package:workout_manager/presentation/bloc/measurements/measurements_bloc.dart';
 import 'package:workout_manager/presentation/bloc/sign_in/sign_in_bloc.dart';
+import 'package:workout_manager/infrastructure/repositories/user_data_repository.dart';
 import 'package:workout_manager/presentation/bloc/workouts/watcher/workout_watcher_bloc.dart';
 import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
 import 'package:workout_manager/presentation/bloc/exercise_form/exercise_form_bloc.dart';
@@ -41,9 +45,15 @@ void $initGetIt(GetIt g, {String environment}) {
       ));
   g.registerLazySingleton<IExercisesRepository>(
       () => ExercisesRepositoryImpl(g<Firestore>()));
+  g.registerLazySingleton<IMeasurementRepository>(
+      () => MeasurementRepositoryImpl(g<Firestore>()));
   g.registerLazySingleton<IWorkoutRepository>(
       () => WorkoutRepositoryImpl(g<Firestore>()));
+  g.registerFactory<MeasurementsBloc>(
+      () => MeasurementsBloc(g<IMeasurementRepository>()));
   g.registerFactory<SignInBloc>(() => SignInBloc(g<IAuthRepository>()));
+  g.registerLazySingleton<UserDataRepository>(
+      () => UserDataRepository(g<Firestore>()));
   g.registerFactory<WorkoutWatcherBloc>(
       () => WorkoutWatcherBloc(g<IWorkoutRepository>()));
   g.registerFactory<AuthBloc>(() => AuthBloc(g<IAuthRepository>()));

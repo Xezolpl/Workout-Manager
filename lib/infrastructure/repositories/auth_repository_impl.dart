@@ -4,7 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:google_sign_in/google_sign_in.dart';
 import 'package:injectable/injectable.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/user.dart';
+import 'package:workout_manager/domain/entities/user/user.dart';
 import 'package:workout_manager/domain/repositories/auth_repository.dart';
 import 'package:workout_manager/infrastructure/data/firebase/firebase_user_mapper.dart';
 

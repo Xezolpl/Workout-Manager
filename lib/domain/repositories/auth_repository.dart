@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/user.dart';
+import 'package:workout_manager/domain/entities/user/user.dart';
 
 abstract class IAuthRepository {
   Future<Option<User>> getSignedInUser();

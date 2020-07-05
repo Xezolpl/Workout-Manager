@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:uuid/uuid.dart';
 import 'package:workout_manager/domain/core/constants/actor_options.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
-import 'package:workout_manager/domain/entities/workout.dart';
+import 'package:workout_manager/domain/core/x_datetime.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
+import 'package:workout_manager/domain/entities/workout/workout.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/workouts/current_workout/current_workout_bloc.dart';
 import 'package:workout_manager/presentation/bloc/workouts/watcher/workout_watcher_bloc.dart';
@@ -12,16 +13,6 @@ import 'package:workout_manager/presentation/util/flushbars.dart';
 class WorkoutsDropdownList extends StatelessWidget {
   final Exercise exercise;
   const WorkoutsDropdownList(this.exercise, {Key key}) : super(key: key);
-
-  String formatDate(DateTime d) {
-    String day = d.day < 10 ? '0${d.day}' : '${d.day}';
-    String month = d.month < 10 ? '0${d.month}' : '${d.month}';
-    String year = '${d.year}';
-
-    String hour = d.hour < 10 ? '0${d.hour}' : '${d.hour}';
-    String minute = d.minute < 10 ? '0${d.minute}' : '${d.minute}';
-    return day + '.' + month + '.' + year + ' - ' + hour + ':' + minute;
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -67,7 +58,7 @@ class WorkoutsDropdownList extends StatelessWidget {
                           value: selectedWorkout,
                           items: allWorkouts
                               .map((e) => DropdownMenuItem<Workout>(
-                                  child: Text(formatDate(e.date)), value: e))
+                                  child: Text(XDateTime(e.date).toDateHourMinuteFormat()), value: e))
                               .toList(),
                           onChanged: (Workout newWorkout) {
                             context.bloc<CurrentWorkoutBloc>().add(

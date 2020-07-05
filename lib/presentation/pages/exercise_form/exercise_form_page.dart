@@ -2,7 +2,7 @@ import 'package:dartz/dartz.dart';
 import 'package:flushbar/flushbar_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/exercise_form/exercise_form_bloc.dart';
 import 'package:workout_manager/presentation/pages/exercise_form/widgets/exercise_form_scaffold.dart';

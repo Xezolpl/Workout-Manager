@@ -7,7 +7,7 @@ import 'package:injectable/injectable.dart';
 import 'package:meta/meta.dart';
 import 'package:workout_manager/domain/core/constants/exercise_constants.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/domain/repositories/exercises_repository.dart';
 
 part 'exercise_form_event.dart';

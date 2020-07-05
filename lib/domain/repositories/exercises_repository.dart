@@ -1,6 +1,6 @@
 import 'package:dartz/dartz.dart';
 import 'package:workout_manager/domain/core/error/failures.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 
 
 abstract class IExercisesRepository{

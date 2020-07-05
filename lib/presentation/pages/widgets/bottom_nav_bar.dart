@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:workout_manager/domain/entities/exercise.dart';
+import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 
 class MainBottomNavBar extends StatelessWidget {
