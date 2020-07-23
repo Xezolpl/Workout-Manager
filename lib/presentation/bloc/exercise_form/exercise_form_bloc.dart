@@ -35,8 +35,7 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
                 state.copyWith(exercise: initialExercise, isEditing: true));
       },
       nameChanged: (e) async* {
-        yield state.copyWith(
-            exercise: state.exercise.copyWith(name: e.name));
+        yield state.copyWith(exercise: state.exercise.copyWith(name: e.name));
       },
       descriptionChanged: (e) async* {
         yield state.copyWith(

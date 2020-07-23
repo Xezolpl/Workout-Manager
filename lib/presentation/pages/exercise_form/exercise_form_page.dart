@@ -26,15 +26,16 @@ class ExerciseFormPage extends StatelessWidget {
           state.saveFailureOrSuccessOption.fold(() {}, (either) {
             either.fold(
                 (failure) => FlushbarHelper.createError(
-                    message: failure.map(
-                      unexpected: (_) =>
-                          'Totally unexpected error. Please contact our support. Thank you.',
-                      unableToUpdate: (_) =>
-                          'Unable to update the exercise. May it been deleted from another device.',
-                      insufficientPermissions: (_) =>
-                          'Insufficient permissions ❌',
-                    ),
-                    duration: Duration(seconds: 5)).show(context),
+                        message: failure.map(
+                          unexpected: (_) =>
+                              'Totally unexpected error. Please contact our support. Thank you.',
+                          unableToUpdate: (_) =>
+                              'Unable to update the exercise. May it been deleted from another device.',
+                          insufficientPermissions: (_) =>
+                              'Insufficient permissions ❌',
+                        ),
+                        duration: Duration(seconds: 5))
+                    .show(context),
                 (_) => Router.navigator.popUntil(
                     (route) => route.settings.name == Routes.mainPage));
           });
@@ -44,10 +45,6 @@ class ExerciseFormPage extends StatelessWidget {
           return Stack(
             children: <Widget>[
               const ExerciseFormScaffold(),
-              IgnorePointer(
-                ignoring: !state.isSaving,
-                child: CircularProgressIndicator(),
-              )
             ],
           );
         },
@@ -55,5 +52,3 @@ class ExerciseFormPage extends StatelessWidget {
     );
   }
 }
-
-

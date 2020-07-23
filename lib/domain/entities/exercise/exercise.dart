@@ -10,16 +10,16 @@ abstract class Exercise with _$Exercise {
     @required String id,
     @required String name,
     @required String description,
-    @required String imgUrl,
     @required List<String> parties,
   }) = _Exercise;
 
-  factory Exercise.empty() => Exercise(
-      id: Uuid().v4().toString(),
-      imgUrl: '',
-      name: '',
-      description: '',
-      parties: ['Chest', 'None', 'None',]);
+  factory Exercise.empty() =>
+      Exercise(id: Uuid().v4().toString(), name: '', description: '', parties: [
+        'Chest',
+        'None',
+        'None',
+      ]);
 
-  factory Exercise.fromJson(Map<String, dynamic> json) => _$ExerciseFromJson(json);
+  factory Exercise.fromJson(Map<String, dynamic> json) =>
+      _$ExerciseFromJson(json);
 }

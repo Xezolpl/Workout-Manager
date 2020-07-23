@@ -36,6 +36,9 @@ class WorkoutPage extends StatelessWidget {
       child: BlocListener<CurrentWorkoutBloc, CurrentWorkoutState>(
         listener: (context, state) {
           selectedWorkout = state.workout;
+          context
+              .bloc<WorkoutWatcherBloc>()
+              .add(WorkoutWatcherEvent.update(selectedWorkout));
         },
         child: Scaffold(
             appBar: AppBar(
@@ -50,23 +53,6 @@ class WorkoutPage extends StatelessWidget {
                     },
                   ),
                 ),
-                Builder(
-                  builder: (context) => IconButton(
-                    icon: Icon(Icons.save),
-                    onPressed: () {
-                      if (selectedWorkout != null &&
-                          selectedWorkout.id.isNotEmpty) {
-                        context
-                          ..bloc<WorkoutWatcherBloc>()
-                              .add(WorkoutWatcherEvent.update(selectedWorkout));
-                      } else {
-                        Flushbars.createInfo(
-                                message: 'You have not selected the workout.')
-                            .show(context);
-                      }
-                    },
-                  ),
-                ),
               ],
             ),
             bottomNavigationBar: bNavBar,
@@ -76,9 +62,9 @@ class WorkoutPage extends StatelessWidget {
                 children: [
                   NameWithPartiesRow(exercise),
                   WorkoutsDropdownList(exercise),
-                   Expanded(
-                     child: SeriesList(),
-                   ),
+                  Expanded(
+                    child: SeriesList(),
+                  ),
                 ],
               ),
             )),

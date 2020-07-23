@@ -46,8 +46,7 @@ class ExerciseFormScaffold extends StatelessWidget {
                   )),
                   SliverToBoxAdapter(child: ExerciseNameTFF()),
                   SliverToBoxAdapter(child: ExerciseDescriptionTFF()),
-                  SliverToBoxAdapter(
-                      child: ExercisePartySelector(index: 0)),
+                  SliverToBoxAdapter(child: ExercisePartySelector(index: 0)),
                   SliverToBoxAdapter(
                       child: SizedBox(
                     height: 16,
@@ -66,10 +65,8 @@ class ExerciseFormScaffold extends StatelessWidget {
                     indent: 18,
                     endIndent: 18,
                   )),
-                  SliverToBoxAdapter(
-                      child: ExercisePartySelector(index: 1)),
-                  SliverToBoxAdapter(
-                      child: ExercisePartySelector(index: 2)),
+                  SliverToBoxAdapter(child: ExercisePartySelector(index: 1)),
+                  SliverToBoxAdapter(child: ExercisePartySelector(index: 2)),
                 ],
               ));
         },

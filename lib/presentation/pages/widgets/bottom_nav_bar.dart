@@ -1,20 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/presentation/bloc/bottom_navigation/bottom_navigation_bloc.dart';
 
 class MainBottomNavBar extends StatelessWidget {
-  const MainBottomNavBar(this.bloc, {Key key}) : super(key: key);
+  MainBottomNavBar({Key key}) : super(key: key);
 
-  final BottomNavigationBloc bloc;
+  BottomNavigationBloc bloc;
 
   @override
   Widget build(BuildContext context) {
+    bloc = context.bloc<BottomNavigationBloc>();
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.only(
             topRight: Radius.circular(30), topLeft: Radius.circular(30)),
         boxShadow: [
-          BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+          BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 6),
         ],
       ),
       child: ClipRRect(
@@ -39,5 +41,5 @@ class MainBottomNavBar extends StatelessWidget {
   }
 
   void changePage(int index, {Exercise exercise}) =>
-      bloc..add(BottomNavigationEvent.pageChanged(exercise!=null ? index : index, exercise: exercise));
+      bloc..add(BottomNavigationEvent.pageChanged(index, exercise: exercise));
 }

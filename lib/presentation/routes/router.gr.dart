@@ -10,6 +10,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:workout_manager/presentation/pages/splash_page.dart';
 import 'package:workout_manager/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:workout_manager/presentation/pages/main_page.dart';
+import 'package:workout_manager/domain/entities/user/user.dart';
 import 'package:workout_manager/presentation/pages/exercise_form/exercise_form_page.dart';
 import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/presentation/pages/measurement/measurement_page.dart';
@@ -52,12 +53,13 @@ class Router extends RouterBase {
           settings: settings,
         );
       case Routes.mainPage:
-        if (hasInvalidArgs<MainPageArguments>(args)) {
+        if (hasInvalidArgs<MainPageArguments>(args, isRequired: true)) {
           return misTypedArgsRoute<MainPageArguments>(args);
         }
-        final typedArgs = args as MainPageArguments ?? MainPageArguments();
+        final typedArgs = args as MainPageArguments;
         return MaterialPageRoute<dynamic>(
-          builder: (context) => MainPage(key: typedArgs.key),
+          builder: (context) =>
+              MainPage(user: typedArgs.user, key: typedArgs.key),
           settings: settings,
         );
       case Routes.exerciseFormPage:
@@ -78,7 +80,9 @@ class Router extends RouterBase {
             args as MeasurementPageArguments ?? MeasurementPageArguments();
         return MaterialPageRoute<dynamic>(
           builder: (context) => MeasurementPage(
-              measurement: typedArgs.measurement, key: typedArgs.key),
+              editedMeasurement: typedArgs.editedMeasurement,
+              date: typedArgs.date,
+              key: typedArgs.key),
           settings: settings,
         );
       default:
@@ -105,8 +109,9 @@ class SignInPageArguments {
 
 //MainPage arguments holder class
 class MainPageArguments {
+  final User user;
   final Key key;
-  MainPageArguments({this.key});
+  MainPageArguments({@required this.user, this.key});
 }
 
 //ExerciseFormPage arguments holder class
@@ -118,7 +123,8 @@ class ExerciseFormPageArguments {
 
 //MeasurementPage arguments holder class
 class MeasurementPageArguments {
-  final Measurement measurement;
+  final Measurement editedMeasurement;
+  final DateTime date;
   final Key key;
-  MeasurementPageArguments({this.measurement, this.key});
+  MeasurementPageArguments({this.editedMeasurement, this.date, this.key});
 }

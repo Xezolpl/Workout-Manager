@@ -13,10 +13,11 @@ part 'bottom_navigation_bloc.freezed.dart';
 @injectable
 class BottomNavigationBloc
     extends Bloc<BottomNavigationEvent, BottomNavigationState> {
-  int currentIndex = 1;
+  int currentIndex = 0;
 
   @override
-  BottomNavigationState get initialState => BottomNavigationState.workoutPage(Exercise.empty()); //get from cashe?
+  BottomNavigationState get initialState =>
+      BottomNavigationState.exercisesPage();
 
   @override
   Stream<BottomNavigationState> mapEventToState(
@@ -26,7 +27,8 @@ class BottomNavigationBloc
     if (currentIndex == 0) {
       yield BottomNavigationState.exercisesPage();
     } else if (currentIndex == 1) {
-      yield BottomNavigationState.workoutPage(event.exercise ?? Exercise.empty());
+      yield BottomNavigationState.workoutPage(
+          event.exercise ?? Exercise.empty());
     } else if (currentIndex == 2) {
       yield BottomNavigationState.accountPage();
     }

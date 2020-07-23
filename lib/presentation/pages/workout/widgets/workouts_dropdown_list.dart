@@ -32,11 +32,12 @@ class WorkoutsDropdownList extends StatelessWidget {
             }
           },
           success: (state) {
-            if(state.operation == OPERATION.INSERT && state.workout!=null){
+            if (state.operation == OPERATION.INSERT && state.workout != null) {
               context
                   .bloc<CurrentWorkoutBloc>()
                   .add(CurrentWorkoutEvent.workoutChanged(state.workout));
-            }else if (state.operation == OPERATION.DELETE && state.workout!=null) {
+            } else if (state.operation == OPERATION.DELETE &&
+                state.workout != null) {
               allWorkouts.remove(state.workout);
               context
                   .bloc<CurrentWorkoutBloc>()
@@ -58,7 +59,9 @@ class WorkoutsDropdownList extends StatelessWidget {
                           value: selectedWorkout,
                           items: allWorkouts
                               .map((e) => DropdownMenuItem<Workout>(
-                                  child: Text(XDateTime(e.date).toDateHourMinuteFormat()), value: e))
+                                  child: Text(XDateTime(e.date)
+                                      .toDateHourMinuteFormat()),
+                                  value: e))
                               .toList(),
                           onChanged: (Workout newWorkout) {
                             context.bloc<CurrentWorkoutBloc>().add(
@@ -69,8 +72,8 @@ class WorkoutsDropdownList extends StatelessWidget {
             ),
             IconButton(
                 onPressed: () {
-                  Workout newWorkout =
-                      Workout.empty().copyWith(id: Uuid().v4().toString(), exerciseId: exercise.id);
+                  Workout newWorkout = Workout.empty().copyWith(
+                      id: Uuid().v4().toString(), exerciseId: exercise.id);
                   if (pickedDate != null) {
                     newWorkout = newWorkout.copyWith(date: pickedDate);
                   }
@@ -100,8 +103,8 @@ class WorkoutsDropdownList extends StatelessWidget {
             IconButton(
                 onPressed: () {
                   context
-                    .bloc<WorkoutWatcherBloc>()
-                        .add(WorkoutWatcherEvent.delete(selectedWorkout));
+                      .bloc<WorkoutWatcherBloc>()
+                      .add(WorkoutWatcherEvent.delete(selectedWorkout));
                 },
                 icon: Icon(Icons.delete_forever)),
           ],

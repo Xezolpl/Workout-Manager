@@ -11,7 +11,6 @@ _$_Exercise _$_$_ExerciseFromJson(Map<String, dynamic> json) {
     id: json['id'] as String,
     name: json['name'] as String,
     description: json['description'] as String,
-    imgUrl: json['imgUrl'] as String,
     parties: (json['parties'] as List)?.map((e) => e as String)?.toList(),
   );
 }
@@ -21,6 +20,5 @@ Map<String, dynamic> _$_$_ExerciseToJson(_$_Exercise instance) =>
       'id': instance.id,
       'name': instance.name,
       'description': instance.description,
-      'imgUrl': instance.imgUrl,
       'parties': instance.parties,
     };

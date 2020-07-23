@@ -37,12 +37,18 @@ class ExercisesPage extends StatelessWidget {
                     child: CircularProgressIndicator(),
                   ),
                   loadSuccess: (state) {
-                    return ListView.builder(
+                    return GridView.builder(
+                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: MediaQuery.of(context).orientation ==
+                                  Orientation.landscape
+                              ? 4
+                              : 2),
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.all(5.0),
                           child: GestureDetector(
-                            onTap: () => bNavBar.changePage(1, exercise: state.exercises[index]),
+                              onTap: () => bNavBar.changePage(1,
+                                  exercise: state.exercises[index]),
                               child: ExerciseCard(
                                   exercise: state.exercises[index])),
                         );

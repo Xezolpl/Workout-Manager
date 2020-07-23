@@ -6,21 +6,22 @@ enum EXERCISE_OPTIONS {
   Duration,
 }
 
-enum WorkoutFields {Weight, Reps, Duration}
+enum WorkoutFields { Weight, Reps, Duration }
 
 abstract class WorkoutCoder {
-  static String encode(int weight, int reps, int duration) {
+  static String encode(double weight, int reps, int duration) {
     return '${weight ?? -1}:${reps ?? -1}:${duration ?? -1}';
   }
 
   static Series decode(String seriesStr) {
     List<String> values = seriesStr.split(':');
-    return Series(int.parse(values[0]), int.parse(values[1]), int.parse(values[2]));
+    return Series(
+        double.parse(values[0]), int.parse(values[1]), int.parse(values[2]));
   }
 }
 
 class Series {
-  final int weight;
+  final double weight;
   final int reps;
   final int duration;
 

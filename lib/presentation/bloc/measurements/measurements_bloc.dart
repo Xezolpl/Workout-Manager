@@ -17,7 +17,6 @@ part 'measurements_bloc.freezed.dart';
 
 @injectable
 class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
-
   final IMeasurementRepository _repository;
 
   StreamSubscription<Either<FirebaseFailure, List<Measurement>>>
@@ -35,40 +34,39 @@ class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
     yield* event.map(
       watch: (e) async* {
         _measurementsStreamSubscription?.cancel();
-        _measurementsStreamSubscription = _repository
-          .watch(e.date)
-          .listen((measurements) =>
-              add(MeasurementsEvent.received(OPERATION.WATCH, measurements)));
+        _measurementsStreamSubscription = _repository.watch(e.date).listen(
+            (measurements) =>
+                add(MeasurementsEvent.received(OPERATION.WATCH, measurements)));
       },
       watchAll: (e) async* {
         _measurementsStreamSubscription?.cancel();
-        _measurementsStreamSubscription = _repository
-          .watchAll()
-          .listen((measurements) =>
-              add(MeasurementsEvent.received(OPERATION.WATCH, measurements)));
+        _measurementsStreamSubscription = _repository.watchAll().listen(
+            (measurements) =>
+                add(MeasurementsEvent.received(OPERATION.WATCH, measurements)));
       },
       received: (e) async* {
         yield e.failureOrMeasurements.fold(
-          (failure) => MeasurementsState.failure(e.operation, failure),
-          (measurements) => MeasurementsState.measurementsLoaded(measurements));
+            (failure) => MeasurementsState.failure(e.operation, failure),
+            (measurements) =>
+                MeasurementsState.measurementsLoaded(measurements));
       },
       insert: (e) async* {
         final failureOrSuccess = await _repository.insert(e.measurement);
         yield failureOrSuccess.fold(
-          (failure) => MeasurementsState.failure(OPERATION.INSERT, failure),
-          (_) => MeasurementsState.success(OPERATION.INSERT, e.measurement));
+            (failure) => MeasurementsState.failure(OPERATION.INSERT, failure),
+            (_) => MeasurementsState.success(OPERATION.INSERT, e.measurement));
       },
       update: (e) async* {
         final failureOrSuccess = await _repository.update(e.measurement);
         yield failureOrSuccess.fold(
-          (failure) => MeasurementsState.failure(OPERATION.UPDATE, failure),
-          (_) => MeasurementsState.success(OPERATION.UPDATE, e.measurement));
+            (failure) => MeasurementsState.failure(OPERATION.UPDATE, failure),
+            (_) => MeasurementsState.success(OPERATION.UPDATE, e.measurement));
       },
       delete: (e) async* {
         final failureOrSuccess = await _repository.delete(e.measurement);
         yield failureOrSuccess.fold(
-          (failure) => MeasurementsState.failure(OPERATION.DELETE, failure),
-          (_) => MeasurementsState.success(OPERATION.DELETE, e.measurement));
+            (failure) => MeasurementsState.failure(OPERATION.DELETE, failure),
+            (_) => MeasurementsState.success(OPERATION.DELETE, e.measurement));
       },
     );
   }
@@ -78,6 +76,4 @@ class MeasurementsBloc extends Bloc<MeasurementsEvent, MeasurementsState> {
     await _measurementsStreamSubscription?.cancel();
     return super.close();
   }
-}  
-
-  
+}

@@ -19,14 +19,14 @@ class _$MeasurementTearOff {
       {@required DateTime date,
       @required double weight,
       @required double bodyFat,
-      @required double muscle,
+      @required double height,
       @required double bmi,
       @required Map<String, double> parties}) {
     return _Measurement(
       date: date,
       weight: weight,
       bodyFat: bodyFat,
-      muscle: muscle,
+      height: height,
       bmi: bmi,
       parties: parties,
     );
@@ -40,7 +40,7 @@ mixin _$Measurement {
   DateTime get date;
   double get weight;
   double get bodyFat;
-  double get muscle;
+  double get height;
   double get bmi;
   Map<String, double> get parties;
 
@@ -56,7 +56,7 @@ abstract class $MeasurementCopyWith<$Res> {
       {DateTime date,
       double weight,
       double bodyFat,
-      double muscle,
+      double height,
       double bmi,
       Map<String, double> parties});
 }
@@ -73,7 +73,7 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
     Object date = freezed,
     Object weight = freezed,
     Object bodyFat = freezed,
-    Object muscle = freezed,
+    Object height = freezed,
     Object bmi = freezed,
     Object parties = freezed,
   }) {
@@ -81,7 +81,7 @@ class _$MeasurementCopyWithImpl<$Res> implements $MeasurementCopyWith<$Res> {
       date: date == freezed ? _value.date : date as DateTime,
       weight: weight == freezed ? _value.weight : weight as double,
       bodyFat: bodyFat == freezed ? _value.bodyFat : bodyFat as double,
-      muscle: muscle == freezed ? _value.muscle : muscle as double,
+      height: height == freezed ? _value.height : height as double,
       bmi: bmi == freezed ? _value.bmi : bmi as double,
       parties:
           parties == freezed ? _value.parties : parties as Map<String, double>,
@@ -99,7 +99,7 @@ abstract class _$MeasurementCopyWith<$Res>
       {DateTime date,
       double weight,
       double bodyFat,
-      double muscle,
+      double height,
       double bmi,
       Map<String, double> parties});
 }
@@ -118,7 +118,7 @@ class __$MeasurementCopyWithImpl<$Res> extends _$MeasurementCopyWithImpl<$Res>
     Object date = freezed,
     Object weight = freezed,
     Object bodyFat = freezed,
-    Object muscle = freezed,
+    Object height = freezed,
     Object bmi = freezed,
     Object parties = freezed,
   }) {
@@ -126,7 +126,7 @@ class __$MeasurementCopyWithImpl<$Res> extends _$MeasurementCopyWithImpl<$Res>
       date: date == freezed ? _value.date : date as DateTime,
       weight: weight == freezed ? _value.weight : weight as double,
       bodyFat: bodyFat == freezed ? _value.bodyFat : bodyFat as double,
-      muscle: muscle == freezed ? _value.muscle : muscle as double,
+      height: height == freezed ? _value.height : height as double,
       bmi: bmi == freezed ? _value.bmi : bmi as double,
       parties:
           parties == freezed ? _value.parties : parties as Map<String, double>,
@@ -140,13 +140,13 @@ class _$_Measurement implements _Measurement {
       {@required this.date,
       @required this.weight,
       @required this.bodyFat,
-      @required this.muscle,
+      @required this.height,
       @required this.bmi,
       @required this.parties})
       : assert(date != null),
         assert(weight != null),
         assert(bodyFat != null),
-        assert(muscle != null),
+        assert(height != null),
         assert(bmi != null),
         assert(parties != null);
 
@@ -160,7 +160,7 @@ class _$_Measurement implements _Measurement {
   @override
   final double bodyFat;
   @override
-  final double muscle;
+  final double height;
   @override
   final double bmi;
   @override
@@ -168,7 +168,7 @@ class _$_Measurement implements _Measurement {
 
   @override
   String toString() {
-    return 'Measurement(date: $date, weight: $weight, bodyFat: $bodyFat, muscle: $muscle, bmi: $bmi, parties: $parties)';
+    return 'Measurement(date: $date, weight: $weight, bodyFat: $bodyFat, height: $height, bmi: $bmi, parties: $parties)';
   }
 
   @override
@@ -182,8 +182,8 @@ class _$_Measurement implements _Measurement {
             (identical(other.bodyFat, bodyFat) ||
                 const DeepCollectionEquality()
                     .equals(other.bodyFat, bodyFat)) &&
-            (identical(other.muscle, muscle) ||
-                const DeepCollectionEquality().equals(other.muscle, muscle)) &&
+            (identical(other.height, height) ||
+                const DeepCollectionEquality().equals(other.height, height)) &&
             (identical(other.bmi, bmi) ||
                 const DeepCollectionEquality().equals(other.bmi, bmi)) &&
             (identical(other.parties, parties) ||
@@ -196,7 +196,7 @@ class _$_Measurement implements _Measurement {
       const DeepCollectionEquality().hash(date) ^
       const DeepCollectionEquality().hash(weight) ^
       const DeepCollectionEquality().hash(bodyFat) ^
-      const DeepCollectionEquality().hash(muscle) ^
+      const DeepCollectionEquality().hash(height) ^
       const DeepCollectionEquality().hash(bmi) ^
       const DeepCollectionEquality().hash(parties);
 
@@ -215,7 +215,7 @@ abstract class _Measurement implements Measurement {
       {@required DateTime date,
       @required double weight,
       @required double bodyFat,
-      @required double muscle,
+      @required double height,
       @required double bmi,
       @required Map<String, double> parties}) = _$_Measurement;
 
@@ -229,7 +229,7 @@ abstract class _Measurement implements Measurement {
   @override
   double get bodyFat;
   @override
-  double get muscle;
+  double get height;
   @override
   double get bmi;
   @override

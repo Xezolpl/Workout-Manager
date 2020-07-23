@@ -15,23 +15,19 @@ class SignInForm extends StatelessWidget {
     return BlocConsumer<SignInBloc, SignInState>(
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(() {}, (either) {
-          either.fold(
-            (lFailure) {
-              FlushbarHelper.createError(
-                message: lFailure.map(
-                  cancelledByUser: (_) => 'Cancelled',
-                  serverError: (_) => 'Server error',
-                  emailAlreadyInUse: (_) => 'Email already in use',
-                  invalidEmailAndPasswordCombination: (_) =>
-                      'Invalid email and password combination',
-                ),
-              ).show(context);
-            },
-            (rUnit){
-             Router.navigator.pushReplacementNamed(Routes.splashPage);
-                context
-                    .bloc<AuthBloc>()
-                    .add(const AuthEvent.authCheckRequested());
+          either.fold((lFailure) {
+            FlushbarHelper.createError(
+              message: lFailure.map(
+                cancelledByUser: (_) => 'Cancelled',
+                serverError: (_) => 'Server error',
+                emailAlreadyInUse: (_) => 'Email already in use',
+                invalidEmailAndPasswordCombination: (_) =>
+                    'Invalid email and password combination',
+              ),
+            ).show(context);
+          }, (rUnit) {
+            Router.navigator.pushReplacementNamed(Routes.splashPage);
+            context.bloc<AuthBloc>().add(const AuthEvent.authCheckRequested());
           });
         });
       },
@@ -41,7 +37,7 @@ class SignInForm extends StatelessWidget {
             child: ListView(
               padding: const EdgeInsets.all(8.0),
               children: <Widget>[
-                const Text('📝',
+                const Text('📝', //TODO: PUT HERE A APLICATION LOGO
                     textAlign: TextAlign.center,
                     style: TextStyle(fontSize: 130)),
                 SizedBox(height: 8.0),
@@ -74,40 +70,39 @@ class SignInForm extends StatelessWidget {
                       : 'Invalid password',
                 ),
                 Row(
-                children: <Widget>[
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: () => context.bloc<SignInBloc>().add(
-                          const SignInEvent
-                              .signInWithEmailAndPasswordPressed()),
-                      child: const Text('SIGN IN'),
+                  children: <Widget>[
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: () => context.bloc<SignInBloc>().add(
+                            const SignInEvent
+                                .signInWithEmailAndPasswordPressed()),
+                        child: const Text('SIGN IN'),
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 8),
-                  Expanded(
-                    child: FlatButton(
-                      onPressed: () => context.bloc<SignInBloc>().add(
-                          const SignInEvent
-                              .registerWithEmailAndPasswordPressed()),
-                      child: const Text('REGISTER'),
+                    const SizedBox(width: 8),
+                    Expanded(
+                      child: FlatButton(
+                        onPressed: () => context.bloc<SignInBloc>().add(
+                            const SignInEvent
+                                .registerWithEmailAndPasswordPressed()),
+                        child: const Text('REGISTER'),
+                      ),
                     ),
-                  ),
-                ],
-              ),
-              RaisedButton(
-                onPressed: () => context
-                    .bloc<SignInBloc>()
-                    .add(SignInEvent.signInWithGooglePressed()),
-                color : Colors.lightBlue,
-                child: const Text(
-                  'SIGN IN WITH GOOGLE',
-                  style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)
+                  ],
                 ),
-              ),
-              if (state.isSubmitting) ...[
-                const SizedBox(height: 8),
-                const LinearProgressIndicator(value: null),
-              ]
+                RaisedButton(
+                  onPressed: () => context
+                      .bloc<SignInBloc>()
+                      .add(SignInEvent.signInWithGooglePressed()),
+                  color: Colors.lightBlue,
+                  child: const Text('SIGN IN WITH GOOGLE',
+                      style: TextStyle(
+                          color: Colors.white, fontWeight: FontWeight.bold)),
+                ),
+                if (state.isSubmitting) ...[
+                  const SizedBox(height: 8),
+                  const LinearProgressIndicator(value: null),
+                ]
               ],
             ));
       },

@@ -20,7 +20,7 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
       yield* userDoc.workoutsCollection.snapshots().map((snap) =>
           right<FirebaseFailure, List<Workout>>(
               snap.documents.map((doc) => Workout.fromJson(doc.data)).toList()
-                ..sort((item1, item2) => item1.date.compareTo(item2.date))));
+                ..sort((a, b) => a.date.compareTo(b.date))));
     } catch (e) {
       if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
         yield left(const FirebaseFailure.insufficientPermissions());
@@ -39,7 +39,8 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
           right<FirebaseFailure, List<Workout>>(snap.documents
               .map((doc) => Workout.fromJson(doc.data))
               .where((workout) => workout.exerciseId == exerciseId)
-              .toList()));
+              .toList()
+                ..sort((a, b) => a.date.compareTo(b.date))));
     } catch (e) {
       if (e is PlatformException && e.message.contains('PERMISSION_DENIED')) {
         yield left(const FirebaseFailure.insufficientPermissions());
@@ -60,7 +61,7 @@ class WorkoutRepositoryImpl implements IWorkoutRepository {
       return right(unit);
     } on PlatformException catch (e) {
       if (e.message.contains('PERMISSION_DENIED')) {
-        return left(const FirebaseFailure.insufficientPermissions());  
+        return left(const FirebaseFailure.insufficientPermissions());
       } else if (e.message.contains('NOT_FOUND')) {
         return left(const FirebaseFailure.unableToUpdate());
       } else {

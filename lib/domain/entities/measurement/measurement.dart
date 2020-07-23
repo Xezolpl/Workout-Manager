@@ -4,25 +4,35 @@ part 'measurement.freezed.dart';
 part 'measurement.g.dart';
 
 @freezed
-abstract class Measurement with _$Measurement{
+abstract class Measurement with _$Measurement {
   const factory Measurement({
     @required DateTime date,
     @required double weight,
     @required double bodyFat,
-    @required double muscle,
+    @required double height,
     @required double bmi,
     @required Map<String, double> parties,
   }) = _Measurement;
 
   factory Measurement.empty() => Measurement(
-    date: DateTime.now(),
-    weight: 0,
-    bodyFat: 0,
-    muscle: 0,
-    bmi: 0,
-    parties: {},
-  );
+        date: DateTime.now(),
+        weight: 0,
+        bodyFat: 0,
+        height: 0,
+        bmi: 0,
+        parties: {
+          'arms': 0,
+          'calves': 0,
+          'chest': 0,
+          'forearms': 0,
+          'hips': 0,
+          'neck': 0,
+          'shoulders': 0,
+          'thights': 0,
+          'waist': 0,
+        },
+      );
 
-  factory Measurement.fromJson(Map<String, dynamic> json) => _$MeasurementFromJson(json);
-
+  factory Measurement.fromJson(Map<String, dynamic> json) =>
+      _$MeasurementFromJson(json);
 }

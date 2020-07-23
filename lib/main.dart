@@ -6,7 +6,6 @@ import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
 
-
 void main() {
   configureInjection(Environment.prod);
   runApp(MyApp());
@@ -16,13 +15,13 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (_) =>
-                getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
-          ),
-        ],
-        child: MaterialApp(
+      providers: [
+        BlocProvider(
+          create: (_) =>
+              getIt<AuthBloc>()..add(const AuthEvent.authCheckRequested()),
+        ),
+      ],
+      child: MaterialApp(
           title: 'Workout tracker',
           theme: ThemeData.light().copyWith(
             primaryColor: Colors.orange[700],
@@ -31,7 +30,7 @@ class MyApp extends StatelessWidget {
           builder: ExtendedNavigator<Router>(
             router: Router(),
             initialRoute: Routes.splashPage,
-          )
-        ));
+          )),
+    );
   }
 }

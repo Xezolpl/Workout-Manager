@@ -70,11 +70,11 @@ class SeriesColumn extends StatelessWidget {
           p.workout.id != c.workout.id ||
           p.workout.series.length != c.workout.series.length,
       builder: (context, state) {
-        int idx = 0;
+        int idx = -1;
         return Column(
-          children: state.workout.series.map<Widget>((e) {
+          children: state.workout.series.map<Widget>((encodedSeries) {
             idx += 1;
-            return SingleSeriesRecord(e, idx);
+            return SingleSeriesRecord(encodedSeries, idx);
           }).toList(),
         );
       },
@@ -106,7 +106,7 @@ class SingleSeriesRecord extends StatelessWidget {
               decoration: BoxDecoration(
                 border: Border.all(width: 1, color: Colors.amber),
               ),
-              child: Text('$index'),
+              child: Text('${index + 1}'),
             ),
           ),
           SeriesInputField(series.weight, WorkoutFields.Weight, index),
@@ -119,7 +119,7 @@ class SingleSeriesRecord extends StatelessWidget {
 }
 
 class SeriesInputField extends StatelessWidget {
-  final int initValue;
+  final num initValue;
   final WorkoutFields field;
   final int seriesIndex;
   const SeriesInputField(this.initValue, this.field, this.seriesIndex,
@@ -128,13 +128,15 @@ class SeriesInputField extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = TextEditingController();
-    controller.text = '$initValue';
+    final controller =
+        TextEditingController(text: '${initValue == -1 ? '' : initValue}');
 
     return Expanded(
       flex: 5,
       child: TextField(
         controller: controller,
+        keyboardType: TextInputType.number,
+        decoration: InputDecoration(hintText: '0'),
         onChanged: (value) {
           context.bloc<CurrentWorkoutBloc>().add(
               CurrentWorkoutEvent.seriesChanged(seriesIndex, field, value));

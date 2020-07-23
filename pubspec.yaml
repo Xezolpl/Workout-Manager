@@ -24,7 +24,7 @@ dependencies:
   flutter:
     sdk: flutter
   dartz: ^0.9.0
-  equatable: ^1.1.1
+  equatable: ^1.2.0
   
   freezed_annotation: ^0.11.0
   flutter_bloc: ^4.0.1
@@ -83,6 +83,25 @@ flutter:
       - assets/util/primary.jpg
       - assets/util/secondary.jpg
       - assets/util/empty_img.jpg
+      
+      #ICONS FROM "https://icons8.com/icons/set/bench-over-head", "https://icons8.com/icons/set/bench-press" Bench Press and other icons by  "https://icons8.com" 
+      - assets/workout/dumbbell.png
+      - assets/workout/barbell.png
+      - assets/workout/bench_press.png
+      - assets/workout/bent_dumbbell.png
+      - assets/workout/boxing.png
+      - assets/workout/curls.png
+      - assets/workout/curve_bench.png
+      - assets/workout/cycling.png
+      - assets/workout/jumping_rod.png
+      - assets/workout/pullups.png
+      - assets/workout/pushups.png
+      - assets/workout/rowing_machine.png
+      - assets/workout/running.png
+      - assets/workout/squats.png
+      - assets/workout/stairs.png
+      - assets/workout/stepper.png
+      - assets/workout/treadmill.png
   fonts: 
     - family: ArchivoNarrow
       fonts:

@@ -26,10 +26,10 @@ class CurrentWorkoutBloc
     }, seriesInserted: (e) async* {
       List<String> seriesList = List<String>.from(state.workout.series);
       seriesList.add('-1:-1:-1');
-      yield state.copyWith(
-          workout: state.workout.copyWith(series: seriesList));
+      yield state.copyWith(workout: state.workout.copyWith(series: seriesList));
     }, seriesChanged: (e) async* {
-      int weight, reps, duration;
+      double weight;
+      int reps, duration;
 
       Series series = WorkoutCoder.decode(state.workout.series[e.seriesIndex]);
       weight = series.weight;
@@ -39,24 +39,25 @@ class CurrentWorkoutBloc
       switch (e.field) {
         case WorkoutFields.Weight:
           {
-            weight = int.parse(e.value);
+            weight = double.parse(e.value ?? '0');
             break;
           }
         case WorkoutFields.Reps:
           {
-            reps = int.parse(e.value);
+            reps = int.parse(e.value ?? '0');
             break;
           }
         case WorkoutFields.Duration:
           {
-            duration = int.parse(e.value);
+            duration = int.parse(e.value ?? '0');
             break;
           }
       }
 
       List<String> seriesList = new List<String>.from(state.workout.series);
-      seriesList..removeAt(e.seriesIndex)..insert(
-                  e.seriesIndex, WorkoutCoder.encode(weight, reps, duration));
+      seriesList
+        ..removeAt(e.seriesIndex)
+        ..insert(e.seriesIndex, WorkoutCoder.encode(weight, reps, duration));
       yield state.copyWith(workout: state.workout.copyWith(series: seriesList));
     }, seriesDeleted: (e) async* {
       List<String> seriesList = new List<String>.from(state.workout.series);
