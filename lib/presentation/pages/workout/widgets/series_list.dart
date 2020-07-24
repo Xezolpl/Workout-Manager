@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_manager/domain/core/workout_coder.dart';
 import 'package:workout_manager/presentation/bloc/workouts/current_workout/current_workout_bloc.dart';
+import 'package:workout_manager/presentation/bloc/workouts/watcher/workout_watcher_bloc.dart';
 
 class SeriesList extends StatelessWidget {
   const SeriesList({Key key}) : super(key: key);
@@ -61,9 +62,9 @@ class SeriesHeaderRow extends StatelessWidget {
 
 class SeriesColumn extends StatelessWidget {
   const SeriesColumn({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    bool firstBuild = true;
     return BlocBuilder<CurrentWorkoutBloc, CurrentWorkoutState>(
       condition: (p, c) =>
           p.workout.id == '' ||
@@ -71,6 +72,11 @@ class SeriesColumn extends StatelessWidget {
           p.workout.series.length != c.workout.series.length,
       builder: (context, state) {
         int idx = -1;
+        if (firstBuild && state.workout.id.isNotEmpty) {
+          firstBuild = false;
+          state.workout.series.removeWhere((element) => element == '-1:-1:-1');
+        }
+
         return Column(
           children: state.workout.series.map<Widget>((encodedSeries) {
             idx += 1;
