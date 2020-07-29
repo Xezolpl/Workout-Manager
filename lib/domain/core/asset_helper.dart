@@ -26,6 +26,7 @@ class AssetHelper {
     BARBELL,
     BENCH_PRESS,
     BENT_DUMBBELL,
+    BOXING,
     CURLS,
     CURVE_BENCH,
     CYCLING,
