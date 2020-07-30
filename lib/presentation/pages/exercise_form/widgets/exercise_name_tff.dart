@@ -21,8 +21,12 @@ class ExerciseNameTFF extends StatelessWidget {
         return Padding(
           padding: EdgeInsets.all(15),
           child: TextFormField(
+            autofocus: true,
             controller: textEditingController,
-            decoration: inputWithSuffixDecoration(label: 'Exercise', suffixIcon: Icon(Icons.terrain),),
+            decoration: inputWithSuffixDecoration(
+              label: 'Exercise',
+              suffixIcon: Icon(Icons.terrain),
+            ),
             maxLength: EXERCISE_NAME_MAX_LENGTH,
             maxLengthEnforced: true,
             buildCounter: (buildContext,
@@ -30,8 +34,9 @@ class ExerciseNameTFF extends StatelessWidget {
                 isFocused
                     ? Text('$currentLength / $EXERCISE_NAME_MAX_LENGTH')
                     : null,
-            onChanged: (value) =>
-                context.bloc<ExerciseFormBloc>().add(ExerciseFormEvent.nameChanged(value)),
+            onChanged: (value) => context
+                .bloc<ExerciseFormBloc>()
+                .add(ExerciseFormEvent.nameChanged(value)),
           ),
         );
       },

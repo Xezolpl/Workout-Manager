@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:workout_manager/domain/core/workout_coder.dart';
 import 'package:workout_manager/presentation/bloc/workouts/current_workout/current_workout_bloc.dart';
-import 'package:workout_manager/presentation/bloc/workouts/watcher/workout_watcher_bloc.dart';
 
 class SeriesList extends StatelessWidget {
   const SeriesList({Key key}) : super(key: key);
@@ -142,6 +141,7 @@ class SeriesInputField extends StatelessWidget {
       child: TextField(
         controller: controller,
         keyboardType: TextInputType.number,
+        autofocus: false,
         decoration: InputDecoration(hintText: '0'),
         onChanged: (value) {
           context.bloc<CurrentWorkoutBloc>().add(

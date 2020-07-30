@@ -35,8 +35,9 @@ class ExerciseDescriptionTFF extends StatelessWidget {
                 isFocused
                     ? Text('$currentLength / $EXERCISE_DESCRIPTION_MAX_LENGTH')
                     : null,
-            onChanged: (value) =>
-                context.bloc<ExerciseFormBloc>().add(ExerciseFormEvent.descriptionChanged(value)),
+            onChanged: (value) => context
+                .bloc<ExerciseFormBloc>()
+                .add(ExerciseFormEvent.descriptionChanged(value)),
           ),
         );
       },

@@ -7,12 +7,11 @@ import 'package:workout_manager/presentation/routes/router.gr.dart';
 class CalendarWidget extends StatelessWidget {
   final List<Measurement> measurements;
 
-  const CalendarWidget(this.measurements, {Key key}) : super(key: key);
+  CalendarWidget(this.measurements, {Key key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     var _events = Map<DateTime, List<dynamic>>();
-    final _calendarController = CalendarController();
 
     ///There is only one measurement per day.
     measurements.forEach((element) {
@@ -57,7 +56,7 @@ class CalendarWidget extends StatelessWidget {
       availableGestures: AvailableGestures.horizontalSwipe,
       initialCalendarFormat: CalendarFormat.month,
       startingDayOfWeek: StartingDayOfWeek.monday,
-      calendarController: _calendarController,
+      calendarController: CalendarController(),
       events: _events,
       headerStyle: HeaderStyle(
         centerHeaderTitle: true,
@@ -77,6 +76,7 @@ class CalendarWidget extends StatelessWidget {
       builders: CalendarBuilders(
         markersBuilder: (context, date, events, holidays) => [
           Container(
+              decoration: BoxDecoration(color: Colors.grey[50]),
               alignment: Alignment.center,
               child: Icon(Icons.accessibility_new,
                   size: 32,

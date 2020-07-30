@@ -1,7 +1,6 @@
 import 'dart:math';
 
 class AssetHelper {
-  // P == path
   static const WORKOUT = 'assets/workout';
 
   static const BARBELL = '$WORKOUT/barbell.png';
