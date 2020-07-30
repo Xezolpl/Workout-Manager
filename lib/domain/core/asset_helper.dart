@@ -1,7 +1,6 @@
 import 'dart:math';
 
 class AssetHelper {
-  // P == path
   static const WORKOUT = 'assets/workout';
 
   static const BARBELL = '$WORKOUT/barbell.png';
@@ -26,6 +25,7 @@ class AssetHelper {
     BARBELL,
     BENCH_PRESS,
     BENT_DUMBBELL,
+    BOXING,
     CURLS,
     CURVE_BENCH,
     CYCLING,

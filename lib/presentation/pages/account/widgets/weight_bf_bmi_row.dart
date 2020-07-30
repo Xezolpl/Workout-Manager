@@ -13,7 +13,7 @@ class WeightBfBmiRow extends StatelessWidget {
       children: [
         StyledValueContainer(
           titleText: 'Weight',
-          valueText: '${measurement.weight}kg',
+          valueText: '${measurement != null ? measurement.weight : '-'}kg',
           color: Color(0xffECEFF1),
         ),
         SizedBox(
@@ -21,7 +21,7 @@ class WeightBfBmiRow extends StatelessWidget {
         ),
         StyledValueContainer(
           titleText: 'Body Fat',
-          valueText: '${measurement.bodyFat}%',
+          valueText: '${measurement != null ? measurement.bodyFat : '-'}%',
           color: Color(0xffCFD8DC),
         ),
         SizedBox(
@@ -29,7 +29,8 @@ class WeightBfBmiRow extends StatelessWidget {
         ),
         StyledValueContainer(
           titleText: 'BMI',
-          valueText: '${double.parse(measurement.bmi.toStringAsFixed(2))}',
+          valueText:
+              '${measurement != null ? double.parse(measurement.bmi.toStringAsFixed(2)) : '-'}',
           color: Color(0xffECEFF1),
         ),
       ],

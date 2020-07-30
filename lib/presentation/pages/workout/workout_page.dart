@@ -56,16 +56,25 @@ class WorkoutPage extends StatelessWidget {
               ],
             ),
             bottomNavigationBar: bNavBar,
-            body: Container(
-              padding: EdgeInsets.all(15),
-              child: Column(
-                children: [
-                  NameWithPartiesRow(exercise),
-                  WorkoutsDropdownList(exercise),
-                  Expanded(
-                    child: SeriesList(),
-                  ),
-                ],
+            body: GestureDetector(
+              onTap: () {
+                FocusScopeNode currentFocus = FocusScope.of(context);
+
+                if (!currentFocus.hasPrimaryFocus) {
+                  currentFocus.unfocus();
+                }
+              },
+              child: Container(
+                padding: EdgeInsets.all(15),
+                child: Column(
+                  children: [
+                    NameWithPartiesRow(exercise),
+                    WorkoutsDropdownList(exercise),
+                    Expanded(
+                      child: SeriesList(),
+                    ),
+                  ],
+                ),
               ),
             )),
       ),

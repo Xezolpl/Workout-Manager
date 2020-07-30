@@ -11,7 +11,7 @@ class StyledCancelDoneButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        width: 150,
+        width: 140,
         height: 40,
         margin: EdgeInsets.only(top: 20),
         decoration: BoxDecoration(
@@ -22,13 +22,7 @@ class StyledCancelDoneButton extends StatelessWidget {
             shape:
                 RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
             highlightColor: isCancel ? Colors.red[200] : Colors.green[200],
-            onPressed: () {
-              onPressed();
-              Future.delayed(Duration(milliseconds: 400), () {
-                Router.navigator.popUntil(
-                    (route) => route.settings.name == Routes.mainPage);
-              });
-            },
+            onPressed: onPressed,
             child: Text(
               isCancel ? 'Cancel' : 'Done',
               textAlign: TextAlign.center,

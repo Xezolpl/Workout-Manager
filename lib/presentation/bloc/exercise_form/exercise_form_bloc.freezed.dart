@@ -30,6 +30,12 @@ class _$ExerciseFormEventTearOff {
     );
   }
 
+  _ImageChanged imageChanged(String imgPath) {
+    return _ImageChanged(
+      imgPath,
+    );
+  }
+
   _PartyChanged partyChanged(String party, int index) {
     return _PartyChanged(
       party,
@@ -51,6 +57,7 @@ mixin _$ExerciseFormEvent {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   });
@@ -59,6 +66,7 @@ mixin _$ExerciseFormEvent {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -68,6 +76,7 @@ mixin _$ExerciseFormEvent {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   });
@@ -76,6 +85,7 @@ mixin _$ExerciseFormEvent {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),
@@ -162,12 +172,14 @@ class _$_Initialized implements _Initialized {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return initialized(initialExerciseOption);
@@ -179,6 +191,7 @@ class _$_Initialized implements _Initialized {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -196,12 +209,14 @@ class _$_Initialized implements _Initialized {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return initialized(this);
@@ -213,6 +228,7 @@ class _$_Initialized implements _Initialized {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),
@@ -293,12 +309,14 @@ class _$_NameChanged implements _NameChanged {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return nameChanged(name);
@@ -310,6 +328,7 @@ class _$_NameChanged implements _NameChanged {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -327,12 +346,14 @@ class _$_NameChanged implements _NameChanged {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return nameChanged(this);
@@ -344,6 +365,7 @@ class _$_NameChanged implements _NameChanged {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),
@@ -424,12 +446,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return descriptionChanged(description);
@@ -441,6 +465,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -458,12 +483,14 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return descriptionChanged(this);
@@ -475,6 +502,7 @@ class _$_DescriptionChanged implements _DescriptionChanged {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),
@@ -492,6 +520,142 @@ abstract class _DescriptionChanged implements ExerciseFormEvent {
 
   String get description;
   _$DescriptionChangedCopyWith<_DescriptionChanged> get copyWith;
+}
+
+abstract class _$ImageChangedCopyWith<$Res> {
+  factory _$ImageChangedCopyWith(
+          _ImageChanged value, $Res Function(_ImageChanged) then) =
+      __$ImageChangedCopyWithImpl<$Res>;
+  $Res call({String imgPath});
+}
+
+class __$ImageChangedCopyWithImpl<$Res>
+    extends _$ExerciseFormEventCopyWithImpl<$Res>
+    implements _$ImageChangedCopyWith<$Res> {
+  __$ImageChangedCopyWithImpl(
+      _ImageChanged _value, $Res Function(_ImageChanged) _then)
+      : super(_value, (v) => _then(v as _ImageChanged));
+
+  @override
+  _ImageChanged get _value => super._value as _ImageChanged;
+
+  @override
+  $Res call({
+    Object imgPath = freezed,
+  }) {
+    return _then(_ImageChanged(
+      imgPath == freezed ? _value.imgPath : imgPath as String,
+    ));
+  }
+}
+
+class _$_ImageChanged implements _ImageChanged {
+  const _$_ImageChanged(this.imgPath) : assert(imgPath != null);
+
+  @override
+  final String imgPath;
+
+  @override
+  String toString() {
+    return 'ExerciseFormEvent.imageChanged(imgPath: $imgPath)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other is _ImageChanged &&
+            (identical(other.imgPath, imgPath) ||
+                const DeepCollectionEquality().equals(other.imgPath, imgPath)));
+  }
+
+  @override
+  int get hashCode =>
+      runtimeType.hashCode ^ const DeepCollectionEquality().hash(imgPath);
+
+  @override
+  _$ImageChangedCopyWith<_ImageChanged> get copyWith =>
+      __$ImageChangedCopyWithImpl<_ImageChanged>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result initialized(Option<Exercise> initialExerciseOption),
+    @required Result nameChanged(String name),
+    @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
+    @required Result partyChanged(String party, int index),
+    @required Result saved(),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(imageChanged != null);
+    assert(partyChanged != null);
+    assert(saved != null);
+    return imageChanged(imgPath);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result initialized(Option<Exercise> initialExerciseOption),
+    Result nameChanged(String name),
+    Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
+    Result partyChanged(String party, int index),
+    Result saved(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageChanged != null) {
+      return imageChanged(imgPath);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result initialized(_Initialized value),
+    @required Result nameChanged(_NameChanged value),
+    @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
+    @required Result partyChanged(_PartyChanged value),
+    @required Result saved(_Saved value),
+  }) {
+    assert(initialized != null);
+    assert(nameChanged != null);
+    assert(descriptionChanged != null);
+    assert(imageChanged != null);
+    assert(partyChanged != null);
+    assert(saved != null);
+    return imageChanged(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result initialized(_Initialized value),
+    Result nameChanged(_NameChanged value),
+    Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
+    Result partyChanged(_PartyChanged value),
+    Result saved(_Saved value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (imageChanged != null) {
+      return imageChanged(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _ImageChanged implements ExerciseFormEvent {
+  const factory _ImageChanged(String imgPath) = _$_ImageChanged;
+
+  String get imgPath;
+  _$ImageChangedCopyWith<_ImageChanged> get copyWith;
 }
 
 abstract class _$PartyChangedCopyWith<$Res> {
@@ -564,12 +728,14 @@ class _$_PartyChanged implements _PartyChanged {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return partyChanged(party, index);
@@ -581,6 +747,7 @@ class _$_PartyChanged implements _PartyChanged {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -598,12 +765,14 @@ class _$_PartyChanged implements _PartyChanged {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return partyChanged(this);
@@ -615,6 +784,7 @@ class _$_PartyChanged implements _PartyChanged {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),
@@ -671,12 +841,14 @@ class _$_Saved implements _Saved {
     @required Result initialized(Option<Exercise> initialExerciseOption),
     @required Result nameChanged(String name),
     @required Result descriptionChanged(String description),
+    @required Result imageChanged(String imgPath),
     @required Result partyChanged(String party, int index),
     @required Result saved(),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return saved();
@@ -688,6 +860,7 @@ class _$_Saved implements _Saved {
     Result initialized(Option<Exercise> initialExerciseOption),
     Result nameChanged(String name),
     Result descriptionChanged(String description),
+    Result imageChanged(String imgPath),
     Result partyChanged(String party, int index),
     Result saved(),
     @required Result orElse(),
@@ -705,12 +878,14 @@ class _$_Saved implements _Saved {
     @required Result initialized(_Initialized value),
     @required Result nameChanged(_NameChanged value),
     @required Result descriptionChanged(_DescriptionChanged value),
+    @required Result imageChanged(_ImageChanged value),
     @required Result partyChanged(_PartyChanged value),
     @required Result saved(_Saved value),
   }) {
     assert(initialized != null);
     assert(nameChanged != null);
     assert(descriptionChanged != null);
+    assert(imageChanged != null);
     assert(partyChanged != null);
     assert(saved != null);
     return saved(this);
@@ -722,6 +897,7 @@ class _$_Saved implements _Saved {
     Result initialized(_Initialized value),
     Result nameChanged(_NameChanged value),
     Result descriptionChanged(_DescriptionChanged value),
+    Result imageChanged(_ImageChanged value),
     Result partyChanged(_PartyChanged value),
     Result saved(_Saved value),
     @required Result orElse(),

@@ -41,6 +41,11 @@ class ExerciseFormBloc extends Bloc<ExerciseFormEvent, ExerciseFormState> {
         yield state.copyWith(
             exercise: state.exercise.copyWith(description: e.description));
       },
+      imageChanged: (e) async* {
+        yield state.copyWith(
+          exercise: state.exercise.copyWith(imgPath: e.imgPath),
+        );
+      },
       partyChanged: (e) async* {
         yield state.copyWith(
             primaryParty: e.index == 0 ? e.party : state.primaryParty,

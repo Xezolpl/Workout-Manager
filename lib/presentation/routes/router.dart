@@ -6,7 +6,7 @@ import 'package:workout_manager/presentation/pages/sign_in/sign_in_page.dart';
 import 'package:workout_manager/presentation/pages/splash_page.dart';
 
 @MaterialAutoRouter()
-class $Router{
+class $Router {
   @initial
   SplashPage splashPage;
   SignInPage signInPage;

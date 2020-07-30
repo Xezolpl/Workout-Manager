@@ -19,11 +19,13 @@ class _$ExerciseTearOff {
       {@required String id,
       @required String name,
       @required String description,
+      @required String imgPath,
       @required List<String> parties}) {
     return _Exercise(
       id: id,
       name: name,
       description: description,
+      imgPath: imgPath,
       parties: parties,
     );
   }
@@ -36,6 +38,7 @@ mixin _$Exercise {
   String get id;
   String get name;
   String get description;
+  String get imgPath;
   List<String> get parties;
 
   Map<String, dynamic> toJson();
@@ -45,7 +48,12 @@ mixin _$Exercise {
 abstract class $ExerciseCopyWith<$Res> {
   factory $ExerciseCopyWith(Exercise value, $Res Function(Exercise) then) =
       _$ExerciseCopyWithImpl<$Res>;
-  $Res call({String id, String name, String description, List<String> parties});
+  $Res call(
+      {String id,
+      String name,
+      String description,
+      String imgPath,
+      List<String> parties});
 }
 
 class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
@@ -60,6 +68,7 @@ class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
+    Object imgPath = freezed,
     Object parties = freezed,
   }) {
     return _then(_value.copyWith(
@@ -67,6 +76,7 @@ class _$ExerciseCopyWithImpl<$Res> implements $ExerciseCopyWith<$Res> {
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
+      imgPath: imgPath == freezed ? _value.imgPath : imgPath as String,
       parties: parties == freezed ? _value.parties : parties as List<String>,
     ));
   }
@@ -76,7 +86,12 @@ abstract class _$ExerciseCopyWith<$Res> implements $ExerciseCopyWith<$Res> {
   factory _$ExerciseCopyWith(_Exercise value, $Res Function(_Exercise) then) =
       __$ExerciseCopyWithImpl<$Res>;
   @override
-  $Res call({String id, String name, String description, List<String> parties});
+  $Res call(
+      {String id,
+      String name,
+      String description,
+      String imgPath,
+      List<String> parties});
 }
 
 class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
@@ -92,6 +107,7 @@ class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
     Object id = freezed,
     Object name = freezed,
     Object description = freezed,
+    Object imgPath = freezed,
     Object parties = freezed,
   }) {
     return _then(_Exercise(
@@ -99,6 +115,7 @@ class __$ExerciseCopyWithImpl<$Res> extends _$ExerciseCopyWithImpl<$Res>
       name: name == freezed ? _value.name : name as String,
       description:
           description == freezed ? _value.description : description as String,
+      imgPath: imgPath == freezed ? _value.imgPath : imgPath as String,
       parties: parties == freezed ? _value.parties : parties as List<String>,
     ));
   }
@@ -110,10 +127,12 @@ class _$_Exercise implements _Exercise {
       {@required this.id,
       @required this.name,
       @required this.description,
+      @required this.imgPath,
       @required this.parties})
       : assert(id != null),
         assert(name != null),
         assert(description != null),
+        assert(imgPath != null),
         assert(parties != null);
 
   factory _$_Exercise.fromJson(Map<String, dynamic> json) =>
@@ -126,11 +145,13 @@ class _$_Exercise implements _Exercise {
   @override
   final String description;
   @override
+  final String imgPath;
+  @override
   final List<String> parties;
 
   @override
   String toString() {
-    return 'Exercise(id: $id, name: $name, description: $description, parties: $parties)';
+    return 'Exercise(id: $id, name: $name, description: $description, imgPath: $imgPath, parties: $parties)';
   }
 
   @override
@@ -144,6 +165,9 @@ class _$_Exercise implements _Exercise {
             (identical(other.description, description) ||
                 const DeepCollectionEquality()
                     .equals(other.description, description)) &&
+            (identical(other.imgPath, imgPath) ||
+                const DeepCollectionEquality()
+                    .equals(other.imgPath, imgPath)) &&
             (identical(other.parties, parties) ||
                 const DeepCollectionEquality().equals(other.parties, parties)));
   }
@@ -154,6 +178,7 @@ class _$_Exercise implements _Exercise {
       const DeepCollectionEquality().hash(id) ^
       const DeepCollectionEquality().hash(name) ^
       const DeepCollectionEquality().hash(description) ^
+      const DeepCollectionEquality().hash(imgPath) ^
       const DeepCollectionEquality().hash(parties);
 
   @override
@@ -171,6 +196,7 @@ abstract class _Exercise implements Exercise {
       {@required String id,
       @required String name,
       @required String description,
+      @required String imgPath,
       @required List<String> parties}) = _$_Exercise;
 
   factory _Exercise.fromJson(Map<String, dynamic> json) = _$_Exercise.fromJson;
@@ -181,6 +207,8 @@ abstract class _Exercise implements Exercise {
   String get name;
   @override
   String get description;
+  @override
+  String get imgPath;
   @override
   List<String> get parties;
   @override

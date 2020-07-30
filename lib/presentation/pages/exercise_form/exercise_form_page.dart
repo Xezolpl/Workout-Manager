@@ -19,36 +19,40 @@ class ExerciseFormPage extends StatelessWidget {
     return BlocProvider(
       create: (context) => getIt<ExerciseFormBloc>()
         ..add(ExerciseFormEvent.initialized(optionOf(editedExercise))),
-      child: BlocConsumer<ExerciseFormBloc, ExerciseFormState>(
-        listenWhen: (p, c) =>
-            p.saveFailureOrSuccessOption != c.saveFailureOrSuccessOption,
-        listener: (context, state) {
-          state.saveFailureOrSuccessOption.fold(() {}, (either) {
-            either.fold(
-                (failure) => FlushbarHelper.createError(
-                        message: failure.map(
-                          unexpected: (_) =>
-                              'Totally unexpected error. Please contact our support. Thank you.',
-                          unableToUpdate: (_) =>
-                              'Unable to update the exercise. May it been deleted from another device.',
-                          insufficientPermissions: (_) =>
-                              'Insufficient permissions ❌',
-                        ),
-                        duration: Duration(seconds: 5))
-                    .show(context),
-                (_) => Router.navigator.popUntil(
-                    (route) => route.settings.name == Routes.mainPage));
-          });
-        },
-        buildWhen: (p, c) => p.isSaving != c.isSaving,
-        builder: (context, state) {
-          return Stack(
+      child: BlocListener<ExerciseFormBloc, ExerciseFormState>(
+          condition: (p, c) =>
+              p.saveFailureOrSuccessOption != c.saveFailureOrSuccessOption,
+          listener: (context, state) {
+            state.saveFailureOrSuccessOption.fold(() {}, (either) {
+              either.fold(
+                  (failure) => FlushbarHelper.createError(
+                          message: failure.map(
+                            unexpected: (_) =>
+                                'Totally unexpected error. Please contact our support. Thank you.',
+                            unableToUpdate: (_) =>
+                                'Unable to update the exercise. May it been deleted from another device.',
+                            insufficientPermissions: (_) =>
+                                'Insufficient permissions ❌',
+                          ),
+                          duration: Duration(seconds: 5))
+                      .show(context),
+                  (_) => Router.navigator.popUntil(
+                      (route) => route.settings.name == Routes.mainPage));
+            });
+          },
+          child: Stack(
             children: <Widget>[
-              const ExerciseFormScaffold(),
+              GestureDetector(
+                  onTap: () {
+                    FocusScopeNode currentFocus = FocusScope.of(context);
+
+                    if (!currentFocus.hasPrimaryFocus) {
+                      currentFocus.unfocus();
+                    }
+                  },
+                  child: const ExerciseFormScaffold()),
             ],
-          );
-        },
-      ),
+          )),
     );
   }
 }

@@ -61,9 +61,9 @@ class SeriesHeaderRow extends StatelessWidget {
 
 class SeriesColumn extends StatelessWidget {
   const SeriesColumn({Key key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    bool firstBuild = true;
     return BlocBuilder<CurrentWorkoutBloc, CurrentWorkoutState>(
       condition: (p, c) =>
           p.workout.id == '' ||
@@ -71,6 +71,11 @@ class SeriesColumn extends StatelessWidget {
           p.workout.series.length != c.workout.series.length,
       builder: (context, state) {
         int idx = -1;
+        if (firstBuild && state.workout.id.isNotEmpty) {
+          firstBuild = false;
+          state.workout.series.removeWhere((element) => element == '-1:-1:-1');
+        }
+
         return Column(
           children: state.workout.series.map<Widget>((encodedSeries) {
             idx += 1;
@@ -136,6 +141,7 @@ class SeriesInputField extends StatelessWidget {
       child: TextField(
         controller: controller,
         keyboardType: TextInputType.number,
+        autofocus: false,
         decoration: InputDecoration(hintText: '0'),
         onChanged: (value) {
           context.bloc<CurrentWorkoutBloc>().add(
