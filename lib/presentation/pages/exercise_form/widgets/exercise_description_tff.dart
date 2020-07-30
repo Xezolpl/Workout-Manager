@@ -11,14 +11,12 @@ class ExerciseDescriptionTFF extends StatelessWidget {
   Widget build(BuildContext context) {
     final textEditingController = TextEditingController();
 
-    return BlocConsumer<ExerciseFormBloc, ExerciseFormState>(
-      listenWhen: (p, c) => p.isEditing != c.isEditing,
-      listener: (context, state) {
-        textEditingController.text = state.exercise.description;
-      },
-      buildWhen: (p, c) => p.exercise.description != c.exercise.description,
-      builder: (context, state) {
-        return Padding(
+    return BlocListener<ExerciseFormBloc, ExerciseFormState>(
+        condition: (p, c) => p.isEditing != c.isEditing,
+        listener: (context, state) {
+          textEditingController.text = state.exercise.description;
+        },
+        child: Padding(
           padding: EdgeInsets.all(15),
           child: TextFormField(
             controller: textEditingController,
@@ -39,8 +37,6 @@ class ExerciseDescriptionTFF extends StatelessWidget {
                 .bloc<ExerciseFormBloc>()
                 .add(ExerciseFormEvent.descriptionChanged(value)),
           ),
-        );
-      },
-    );
+        ));
   }
 }

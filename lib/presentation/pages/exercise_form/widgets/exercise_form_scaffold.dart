@@ -15,6 +15,7 @@ class ExerciseFormScaffold extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<ExerciseFormBloc, ExerciseFormState>(
+      condition: (p, c) => p.showErrorMessages != c.showErrorMessages,
       builder: (context, state) {
         return Scaffold(
             appBar: AppBar(
@@ -37,8 +38,7 @@ class ExerciseFormScaffold extends StatelessWidget {
                 autovalidate: state.showErrorMessages,
                 child: CustomScrollView(
                   slivers: <Widget>[
-                    SliverToBoxAdapter(
-                        child: ExerciseImageSelection(state.exercise.imgPath)),
+                    SliverToBoxAdapter(child: ExerciseImageSelection()),
                     SliverToBoxAdapter(child: ExerciseNameTFF()),
                     SliverToBoxAdapter(child: ExerciseDescriptionTFF()),
                     SliverToBoxAdapter(child: ExercisePartySelector(index: 0)),
