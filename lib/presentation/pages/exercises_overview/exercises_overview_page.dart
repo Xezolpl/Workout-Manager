@@ -41,7 +41,7 @@ class ExercisesPage extends StatelessWidget {
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: MediaQuery.of(context).orientation ==
                                   Orientation.landscape
-                              ? 4
+                              ? 3
                               : 2),
                       itemBuilder: (context, index) {
                         return Padding(
