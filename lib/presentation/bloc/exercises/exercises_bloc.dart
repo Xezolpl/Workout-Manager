@@ -18,6 +18,7 @@ class ExercisesBloc extends Bloc<ExercisesEvent, ExercisesState> {
   final IExercisesRepository _repository;
   StreamSubscription<Either<FirebaseFailure, List<Exercise>>>
       _exercisesStreamSubscription;
+  List<Exercise> loadedExercises = [];
   ExercisesBloc(this._repository);
 
   @override
@@ -44,7 +45,19 @@ class ExercisesBloc extends Bloc<ExercisesEvent, ExercisesState> {
           (exercise) => add(ExercisesEvent.exercisesReceived(exercise)));
     }, exercisesReceived: (e) async* {
       yield e.failuresOrExercises.fold((l) => ExercisesState.loadFailure(l),
-          (r) => ExercisesState.loadSuccess(r));
+          (r) {
+        loadedExercises = r;
+        return ExercisesState.loadSuccess(r);
+      });
+    }, filtered: (e) async* {
+      yield ExercisesState.loadSuccess(e.pattern.isEmpty
+          ? loadedExercises
+          : loadedExercises
+              .where((element) => element.name
+                  .trim()
+                  .toLowerCase()
+                  .contains(e.pattern.trim().toLowerCase()))
+              .toList());
     });
   }
 

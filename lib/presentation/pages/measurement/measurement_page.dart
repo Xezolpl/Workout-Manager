@@ -7,6 +7,7 @@ import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/measurements/measurements_bloc.dart';
 import 'package:workout_manager/presentation/pages/measurement/body_text_field.dart';
 import 'package:workout_manager/presentation/pages/measurement/styled_cancel_done_button.dart';
+import 'package:workout_manager/presentation/routes/router.gr.dart';
 import 'package:workout_manager/presentation/util/flushbars.dart';
 
 class MeasurementPage extends StatelessWidget {
@@ -197,7 +198,10 @@ class MeasurementPage extends StatelessWidget {
                       children: [
                         StyledCancelDoneButton(
                           isCancel: true,
-                          onPressed: () {},
+                          onPressed: () {
+                            Router.navigator.popUntil((route) =>
+                                route.settings.name == Routes.mainPage);
+                          },
                         ),
                         StyledCancelDoneButton(
                           isCancel: false,
@@ -217,6 +221,8 @@ class MeasurementPage extends StatelessWidget {
                                   MeasurementsEvent.update(measurement.copyWith(
                                       date: editedMeasurement.date)));
                             }
+                            Router.navigator.popUntil((route) =>
+                                route.settings.name == Routes.mainPage);
                           },
                         )
                       ],
