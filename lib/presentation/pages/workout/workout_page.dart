@@ -39,6 +39,11 @@ class WorkoutPage extends StatelessWidget {
           context
               .bloc<WorkoutWatcherBloc>()
               .add(WorkoutWatcherEvent.update(selectedWorkout));
+
+          if (state.showErrorMessages) {
+            Flushbars.createFailure(
+                message: 'An unexpected error occured. Please try again');
+          }
         },
         child: Scaffold(
             appBar: AppBar(

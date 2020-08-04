@@ -7,6 +7,7 @@ import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/exercise_form/exercise_form_bloc.dart';
 import 'package:workout_manager/presentation/pages/exercise_form/widgets/exercise_form_scaffold.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
+import 'package:workout_manager/presentation/util/flushbars.dart';
 
 class ExerciseFormPage extends StatelessWidget {
   final Exercise editedExercise;
@@ -25,7 +26,7 @@ class ExerciseFormPage extends StatelessWidget {
           listener: (context, state) {
             state.saveFailureOrSuccessOption.fold(() {}, (either) {
               either.fold(
-                  (failure) => FlushbarHelper.createError(
+                  (failure) => Flushbars.createFailure(
                           message: failure.map(
                             unexpected: (_) =>
                                 'Totally unexpected error. Please contact our support. Thank you.',

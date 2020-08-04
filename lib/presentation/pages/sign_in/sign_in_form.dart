@@ -6,6 +6,7 @@ import 'package:workout_manager/domain/core/regex_validators.dart';
 import 'package:workout_manager/presentation/bloc/auth/auth_bloc.dart';
 import 'package:workout_manager/presentation/bloc/sign_in/sign_in_bloc.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
+import 'package:workout_manager/presentation/util/flushbars.dart';
 
 class SignInForm extends StatelessWidget {
   const SignInForm({Key key}) : super(key: key);
@@ -16,7 +17,7 @@ class SignInForm extends StatelessWidget {
       listener: (context, state) {
         state.authFailureOrSuccessOption.fold(() {}, (either) {
           either.fold((lFailure) {
-            FlushbarHelper.createError(
+            Flushbars.createFailure(
               message: lFailure.map(
                 cancelledByUser: (_) => 'Cancelled',
                 serverError: (_) => 'Server error',

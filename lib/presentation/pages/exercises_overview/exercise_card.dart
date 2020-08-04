@@ -40,7 +40,7 @@ class ExerciseCard extends StatelessWidget {
                     child: Padding(
                       padding: const EdgeInsets.all(2.0),
                       child: Image.asset(
-                        AssetHelper.randomWorkoutImagePath(),
+                        exercise.imgPath,
                         height: 44,
                         fit: BoxFit.cover,
                       ),
