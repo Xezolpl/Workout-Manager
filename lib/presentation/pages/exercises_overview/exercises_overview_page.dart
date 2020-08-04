@@ -6,6 +6,7 @@ import 'package:workout_manager/domain/entities/exercise/exercise.dart';
 import 'package:workout_manager/injection.dart';
 import 'package:workout_manager/presentation/bloc/exercises/exercises_bloc.dart';
 import 'package:workout_manager/presentation/pages/widgets/bottom_nav_bar.dart';
+import 'package:workout_manager/presentation/pages/widgets/main_loading_indicator.dart';
 import 'package:workout_manager/presentation/routes/router.gr.dart';
 import 'package:workout_manager/presentation/util/input_decorations.dart';
 
@@ -17,7 +18,7 @@ class ExercisesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(
+    return BlocProvider<ExercisesBloc>(
         create: (context) =>
             getIt<ExercisesBloc>()..add(ExercisesEvent.watchAllStarted()),
         child: Scaffold(
@@ -37,9 +38,7 @@ class ExercisesPage extends StatelessWidget {
                   builder: (context, state) {
                     return state.map(
                       initial: (_) => Container(),
-                      loadInProgress: (_) => const Center(
-                        child: CircularProgressIndicator(),
-                      ),
+                      loadInProgress: (_) => const MainLoadingIndicator(),
                       loadSuccess: (state) {
                         return Container(
                             width: double.infinity,
@@ -99,7 +98,9 @@ class ExercisesPage extends StatelessWidget {
                       },
                       loadFailure: (state) {
                         return Container(
-                          child: Text('FAILURE'),
+                          alignment: Alignment.center,
+                          child: Text(
+                              'An unexpected error occured. Please try to restart the application.'),
                         );
                       },
                     );
