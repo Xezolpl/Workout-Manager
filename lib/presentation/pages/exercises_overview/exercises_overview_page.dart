@@ -18,9 +18,9 @@ class ExercisesPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final bloc = getIt<ExercisesBloc>();
     return BlocProvider<ExercisesBloc>(
-        create: (context) =>
-            getIt<ExercisesBloc>()..add(ExercisesEvent.watchAllStarted()),
+        create: (context) => bloc..add(ExercisesEvent.watchAllStarted()),
         child: Scaffold(
           bottomNavigationBar: bNavBar,
           body: Container(
@@ -55,9 +55,7 @@ class ExercisesPage extends StatelessWidget {
                                         suffixIcon: Icon(Icons.search),
                                         label: 'Search'),
                                     onChanged: (value) {
-                                      context
-                                          .bloc<ExercisesBloc>()
-                                          .add(ExercisesEvent.filtered(value));
+                                      bloc.add(ExercisesEvent.filtered(value));
                                     },
                                   ),
                                 ),
@@ -111,8 +109,11 @@ class ExercisesPage extends StatelessWidget {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              Router.navigator.pushNamed(Routes.exerciseFormPage,
-                  arguments: ExerciseFormPageArguments(editedExercise: null));
+              Router.navigator
+                  .pushNamed(Routes.exerciseFormPage,
+                      arguments:
+                          ExerciseFormPageArguments(editedExercise: null))
+                  .then((value) => bloc.add(ExercisesEvent.watchAllStarted()));
             },
             child: Center(child: Icon(Icons.add)),
           ),

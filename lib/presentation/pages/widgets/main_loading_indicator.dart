@@ -8,6 +8,7 @@ class MainLoadingIndicator extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       alignment: Alignment.center,
+      decoration: BoxDecoration(color: Colors.grey[50]),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
